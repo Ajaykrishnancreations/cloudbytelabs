@@ -1,0 +1,832 @@
+[
+  {
+    "slug": "salesforce",
+    "title": "Salesforce",
+    "category": "CRM & CLOUD DEVELOPMENT",
+    "headline": "Become a job-ready Salesforce professional.",
+    "description": "Master administration, Apex, Lightning Web Components and professional development practices through hands-on projects.",
+    "technologies": ["Admin", "Apex", "LWC", "SOQL", "Flow", "Git"],
+    "modules": [
+      {
+        "title": "Salesforce Ecosystem",
+        "topics": [
+          "What is Salesforce?",
+          "CRM fundamentals",
+          "Salesforce architecture",
+          "Salesforce clouds overview",
+          "Salesforce terminology",
+          "Trailhead",
+          "Developer org",
+          "Setup",
+          "App Launcher"
+        ]
+      },
+      {
+        "title": "Salesforce Administration",
+        "topics": [
+          "Users",
+          "Roles",
+          "Profiles",
+          "Permission Sets",
+          "Permission Set Groups",
+          "Licenses",
+          "Login access",
+          "Sharing model",
+          "Organization-Wide Defaults",
+          "Role hierarchy",
+          "Sharing rules",
+          "Manual sharing",
+          "Field-Level Security"
+        ]
+      },
+      {
+        "title": "Data Modelling",
+        "topics": [
+          "Standard objects",
+          "Custom objects",
+          "Standard fields",
+          "Custom fields",
+          "Formula fields",
+          "Relationships",
+          "Lookup",
+          "Master-detail",
+          "Junction objects",
+          "Schema Builder",
+          "Record types",
+          "Page layouts"
+        ]
+      },
+      {
+        "title": "Salesforce Data Management",
+        "topics": [
+          "Import Wizard",
+          "Data Loader",
+          "Import/export",
+          "Duplicate management",
+          "Validation rules",
+          "Data quality",
+          "Data security"
+        ]
+      },
+      {
+        "title": "Reports & Dashboards",
+        "topics": [
+          "Report types",
+          "Tabular reports",
+          "Summary reports",
+          "Matrix reports",
+          "Joined reports",
+          "Filters",
+          "Formulas",
+          "Dashboards",
+          "Dynamic dashboards"
+        ]
+      },
+      {
+        "title": "Salesforce Automation",
+        "topics": [
+          "Flow fundamentals",
+          "Record-triggered flows",
+          "Screen flows",
+          "Scheduled flows",
+          "Subflows",
+          "Decisions",
+          "Loops",
+          "Assignments",
+          "Error handling",
+          "Flow debugging",
+          "Automation best practices"
+        ]
+      },
+      {
+        "title": "Development Fundamentals",
+        "topics": [
+          "HTML",
+          "CSS",
+          "JavaScript",
+          "ES6+",
+          "Variables",
+          "Functions",
+          "Arrays",
+          "Objects",
+          "Async programming",
+          "Promises",
+          "Modules",
+          "DOM basics"
+        ]
+      },
+      {
+        "title": "Lightning Web Components",
+        "topics": [
+          "LWC architecture",
+          "Component structure",
+          "HTML",
+          "JavaScript",
+          "CSS",
+          "XML metadata",
+          "Reactive properties",
+          "Getters",
+          "Conditional rendering",
+          "Loops",
+          "Parent/child communication",
+          "Public properties",
+          "Public methods",
+          "Custom events",
+          "Lightning Data Service",
+          "UI Record API",
+          "Wire adapters",
+          "@wire",
+          "Calling Apex",
+          "Wire Apex",
+          "Imperative Apex calls",
+          "Parameters",
+          "Responses",
+          "Error handling",
+          "Caching",
+          "Refreshing data",
+          "NavigationMixin",
+          "Record navigation",
+          "Custom pages",
+          "SLDS",
+          "Lightning base components",
+          "Toast messages",
+          "Spinners",
+          "Modals",
+          "Datatables",
+          "Forms",
+          "LMS",
+          "Custom events",
+          "Reusable components",
+          "Performance",
+          "Security",
+          "Component architecture"
+        ]
+      },
+      {
+        "title": "Apex Development",
+        "topics": [
+          "Apex syntax",
+          "Variables",
+          "Collections",
+          "Lists",
+          "Sets",
+          "Maps",
+          "Classes",
+          "Methods",
+          "Constructors",
+          "OOP concepts",
+          "Interfaces",
+          "Inheritance",
+          "Exceptions"
+        ]
+      },
+      {
+        "title": "SOQL & SOSL",
+        "topics": [
+          "SELECT",
+          "WHERE",
+          "ORDER BY",
+          "LIMIT",
+          "Relationships",
+          "Parent-to-child",
+          "Child-to-parent",
+          "Aggregate queries",
+          "Dynamic SOQL",
+          "SOSL",
+          "Query optimisation"
+        ]
+      },
+      {
+        "title": "Triggers",
+        "topics": [
+          "Trigger context",
+          "Before trigger",
+          "After trigger",
+          "Insert",
+          "Update",
+          "Delete",
+          "Undelete",
+          "One-trigger architecture",
+          "Trigger handlers",
+          "Bulkification",
+          "Avoiding SOQL inside loops",
+          "Avoiding DML inside loops",
+          "Governor limits",
+          "Recursion handling",
+          "Error handling"
+        ]
+      },
+      {
+        "title": "Asynchronous Apex",
+        "topics": [
+          "Future methods",
+          "Queueable Apex",
+          "Batch Apex",
+          "Scheduled Apex",
+          "Use cases",
+          "Limits",
+          "Error handling"
+        ]
+      },
+      {
+        "title": "Security For Developers",
+        "topics": [
+          "Sharing",
+          "CRUD",
+          "FLS",
+          "with sharing",
+          "without sharing",
+          "inherited sharing",
+          "Secure Apex",
+          "Secure SOQL",
+          "Lightning security concepts"
+        ]
+      },
+      {
+        "title": "Testing",
+        "topics": [
+          "Apex test classes",
+          "Test methods",
+          "Test data",
+          "Test setup",
+          "Positive scenarios",
+          "Negative scenarios",
+          "Bulk scenarios",
+          "User/security scenarios",
+          "Mocking integrations",
+          "Assertions",
+          "Deployment coverage requirements",
+          "Jest",
+          "Component unit testing",
+          "Event testing",
+          "DOM testing",
+          "API testing"
+        ]
+      },
+      {
+        "title": "Code Quality",
+        "topics": [
+          "Naming conventions",
+          "Apex architecture",
+          "Service classes",
+          "Selector patterns where appropriate",
+          "Reusable code",
+          "Error handling",
+          "Logging",
+          "Performance",
+          "Security",
+          "Technical debt",
+          "PMD",
+          "ESLint",
+          "Security rules",
+          "Performance rules",
+          "Code smells",
+          "CI validation"
+        ]
+      },
+      {
+        "title": "Development Workflow",
+        "topics": [
+          "VS Code",
+          "Salesforce CLI",
+          "Git",
+          "GitHub",
+          "Branching",
+          "Pull requests",
+          "Code reviews",
+          "Scratch/developer environments",
+          "Deployments",
+          "Metadata",
+          "Package.xml",
+          "CI/CD introduction"
+        ]
+      },
+      {
+        "title": "Integration",
+        "topics": [
+          "REST API",
+          "Callouts",
+          "Named Credentials",
+          "JSON",
+          "Authentication concepts",
+          "External APIs",
+          "Error handling",
+          "Integration patterns"
+        ]
+      },
+      {
+        "title": "Capstone Project",
+        "topics": [
+          "Custom objects",
+          "Security",
+          "Permission sets",
+          "Automations",
+          "Apex",
+          "LWC",
+          "Reports",
+          "Dashboards",
+          "Tests",
+          "Code-quality validation",
+          "Git repository"
+        ]
+      }
+    ],
+    "roadmap": [
+      "Basics",
+      "Admin",
+      "Data Model",
+      "Security",
+      "Automation",
+      "JavaScript",
+      "Apex",
+      "SOQL",
+      "LWC",
+      "Testing",
+      "Git",
+      "Real Project",
+      "Interview Prep"
+    ],
+    "project": {
+      "title": "Customer Service Management System",
+      "problem": "Design a CRM that helps a service team manage customer requests, automate assignments and measure response performance."
+    },
+    "prerequisites": [
+      "A laptop with a stable internet connection",
+      "Willingness to practise between sessions"
+    ],
+    "audience": [
+      "College students",
+      "Graduates",
+      "Working professionals",
+      "Career switchers"
+    ]
+  },
+  {
+    "slug": "mern-stack",
+    "title": "MERN Stack",
+    "category": "FULL STACK DEVELOPMENT",
+    "headline": "Build complete modern web applications.",
+    "description": "Go from your first React component to a complete application with APIs, databases, authentication and deployment.",
+    "technologies": ["MongoDB", "Express", "React", "Node.js"],
+    "modules": [
+      {
+        "title": "Web Fundamentals",
+        "topics": [
+          "HTML5",
+          "Semantic HTML",
+          "Forms",
+          "CSS",
+          "Flexbox",
+          "Grid",
+          "Responsive design",
+          "JavaScript fundamentals",
+          "ES6+"
+        ]
+      },
+      {
+        "title": "JavaScript",
+        "topics": [
+          "Variables",
+          "Functions",
+          "Arrays",
+          "Objects",
+          "Scope",
+          "Closures",
+          "Modules",
+          "Promises",
+          "Async/await",
+          "Fetch API",
+          "Error handling"
+        ]
+      },
+      {
+        "title": "React",
+        "topics": [
+          "JSX",
+          "Components",
+          "Props",
+          "State",
+          "Events",
+          "Conditional rendering",
+          "Lists",
+          "Forms",
+          "Hooks",
+          "useState",
+          "useEffect",
+          "useRef",
+          "useMemo",
+          "useCallback",
+          "Custom hooks",
+          "Context",
+          "State architecture",
+          "Routing",
+          "API integration",
+          "Authentication",
+          "Protected routes",
+          "Component design",
+          "Reusable components",
+          "Performance optimisation",
+          "Error handling",
+          "TypeScript introduction",
+          "Testing",
+          "Production builds"
+        ]
+      },
+      {
+        "title": "Node.js",
+        "topics": [
+          "Node architecture",
+          "Modules",
+          "NPM",
+          "Environment variables",
+          "File system",
+          "Async programming",
+          "Server development"
+        ]
+      },
+      {
+        "title": "Express.js",
+        "topics": [
+          "Server setup",
+          "Routing",
+          "Controllers",
+          "Middleware",
+          "REST APIs",
+          "Validation",
+          "Error handling",
+          "Authentication",
+          "Authorization",
+          "Logging",
+          "Security"
+        ]
+      },
+      {
+        "title": "MongoDB",
+        "topics": [
+          "Databases",
+          "Collections",
+          "Documents",
+          "CRUD",
+          "Querying",
+          "Indexing",
+          "Aggregation",
+          "Data modelling",
+          "MongoDB Atlas",
+          "Mongoose"
+        ]
+      },
+      {
+        "title": "Authentication",
+        "topics": [
+          "Password hashing",
+          "JWT",
+          "Cookies",
+          "Refresh/access token concepts",
+          "Role-based authorization",
+          "Secure authentication"
+        ]
+      },
+      {
+        "title": "APIs",
+        "topics": [
+          "REST architecture",
+          "HTTP",
+          "Status codes",
+          "Pagination",
+          "Filtering",
+          "Searching",
+          "Sorting",
+          "API validation",
+          "Postman"
+        ]
+      },
+      {
+        "title": "Professional Development",
+        "topics": [
+          "Git",
+          "GitHub",
+          "Branches",
+          "Pull requests",
+          "Code review",
+          "Environment management",
+          "ESLint",
+          "Formatting",
+          "Debugging"
+        ]
+      },
+      {
+        "title": "Deployment",
+        "topics": [
+          "Build process",
+          "Frontend deployment",
+          "Backend deployment",
+          "MongoDB Atlas",
+          "Environment variables",
+          "Logs",
+          "Production basics"
+        ]
+      },
+      {
+        "title": "MERN Capstone",
+        "topics": [
+          "E-commerce application",
+          "Learning platform",
+          "Job portal",
+          "CRM",
+          "Booking platform"
+        ]
+      }
+    ],
+    "roadmap": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "React",
+      "Node",
+      "Express",
+      "MongoDB",
+      "REST API",
+      "Authentication",
+      "Testing",
+      "Deployment",
+      "Real Project"
+    ],
+    "project": {
+      "title": "Full Stack E-Commerce Platform",
+      "problem": "Build a responsive storefront with product search, a shopping cart, secure accounts and an order-management dashboard."
+    },
+    "prerequisites": [
+      "A laptop with a stable internet connection",
+      "Willingness to practise between sessions"
+    ],
+    "audience": [
+      "College students",
+      "Graduates",
+      "Working professionals",
+      "Career switchers"
+    ]
+  },
+  {
+    "slug": "ui-ux",
+    "title": "UI/UX Design",
+    "category": "PRODUCT & EXPERIENCE DESIGN",
+    "headline": "Design digital products people love to use.",
+    "description": "Turn meaningful research into thoughtful interfaces, interactive prototypes and a portfolio-ready product case study.",
+    "technologies": ["Figma", "Research", "Prototyping", "Design Systems"],
+    "modules": [
+      {
+        "title": "UX Foundations",
+        "topics": [
+          "UX principles",
+          "Design thinking",
+          "Product thinking",
+          "User-centred design"
+        ]
+      },
+      {
+        "title": "Research",
+        "topics": [
+          "User interviews",
+          "Surveys",
+          "Competitor analysis",
+          "Personas",
+          "User needs",
+          "Problem statements"
+        ]
+      },
+      {
+        "title": "Information Architecture",
+        "topics": ["User flows", "Site maps", "Navigation", "Content hierarchy"]
+      },
+      {
+        "title": "Wireframes",
+        "topics": ["Low fidelity", "Mid fidelity", "User flows"]
+      },
+      {
+        "title": "UI Design",
+        "topics": [
+          "Typography",
+          "Colour",
+          "Layout",
+          "Spacing",
+          "Hierarchy",
+          "Grid systems",
+          "Icons"
+        ]
+      },
+      {
+        "title": "Figma",
+        "topics": [
+          "Frames",
+          "Components",
+          "Auto Layout",
+          "Variants",
+          "Variables",
+          "Libraries",
+          "Prototyping"
+        ]
+      },
+      {
+        "title": "Design Systems",
+        "topics": ["Tokens", "Components", "Patterns", "Documentation"]
+      },
+      {
+        "title": "Responsive Design",
+        "topics": ["Desktop", "Tablet", "Mobile", "Breakpoints"]
+      },
+      {
+        "title": "Accessibility",
+        "topics": [
+          "Contrast",
+          "Keyboard usability",
+          "Forms",
+          "Accessible components"
+        ]
+      },
+      {
+        "title": "Prototype & Testing",
+        "topics": [
+          "Interactive prototypes",
+          "Usability testing",
+          "Feedback",
+          "Iterations"
+        ]
+      },
+      {
+        "title": "Developer Handoff",
+        "topics": [
+          "Specifications",
+          "Assets",
+          "Design tokens",
+          "Responsive rules",
+          "Collaboration"
+        ]
+      },
+      {
+        "title": "Portfolio",
+        "topics": [
+          "Case study",
+          "Research",
+          "Wireframes",
+          "Final screens",
+          "Prototype",
+          "Portfolio presentation"
+        ]
+      }
+    ],
+    "roadmap": [
+      "Research",
+      "Problem",
+      "Persona",
+      "User Flow",
+      "Wireframe",
+      "Visual Design",
+      "Prototype",
+      "Test",
+      "Design System",
+      "Portfolio"
+    ],
+    "project": {
+      "title": "End-to-End SaaS Product Design",
+      "problem": "Research a team productivity problem and design an accessible SaaS experience from interviews to developer handoff."
+    },
+    "prerequisites": [
+      "A laptop with a stable internet connection",
+      "Willingness to practise between sessions"
+    ],
+    "audience": [
+      "College students",
+      "Graduates",
+      "Working professionals",
+      "Career switchers"
+    ]
+  },
+  {
+    "slug": "python",
+    "title": "Python",
+    "category": "PROGRAMMING & AUTOMATION",
+    "headline": "Learn Python through practical programming.",
+    "description": "Build a strong programming foundation, automate everyday tasks and create useful APIs with Python.",
+    "technologies": ["Python", "OOP", "APIs", "Automation"],
+    "modules": [
+      {
+        "title": "Fundamentals",
+        "topics": [
+          "Setup",
+          "Syntax",
+          "Variables",
+          "Data types",
+          "Operators",
+          "Conditions",
+          "Loops"
+        ]
+      },
+      {
+        "title": "Data Structures",
+        "topics": ["Lists", "Tuples", "Sets", "Dictionaries"]
+      },
+      {
+        "title": "Functions",
+        "topics": [
+          "Functions",
+          "Parameters",
+          "Return values",
+          "Scope",
+          "Lambda"
+        ]
+      },
+      {
+        "title": "Object-Oriented Programming",
+        "topics": [
+          "Classes",
+          "Objects",
+          "Constructors",
+          "Encapsulation",
+          "Inheritance",
+          "Polymorphism"
+        ]
+      },
+      {
+        "title": "Advanced Python",
+        "topics": [
+          "Comprehensions",
+          "Iterators",
+          "Generators",
+          "Decorators",
+          "Context managers"
+        ]
+      },
+      {
+        "title": "Error Handling",
+        "topics": ["Exceptions", "Custom exceptions", "Debugging"]
+      },
+      {
+        "title": "Files",
+        "topics": ["Text", "JSON", "CSV"]
+      },
+      {
+        "title": "Modules",
+        "topics": ["Modules", "Packages", "pip", "Virtual environments"]
+      },
+      {
+        "title": "Database",
+        "topics": ["SQL basics", "Database connections", "CRUD"]
+      },
+      {
+        "title": "APIs",
+        "topics": ["HTTP", "JSON", "REST APIs", "Calling APIs"]
+      },
+      {
+        "title": "Backend Introduction",
+        "topics": ["FastAPI", "Flask"]
+      },
+      {
+        "title": "Automation",
+        "topics": [
+          "Practical exercises",
+          "Guided implementation",
+          "Project application"
+        ]
+      },
+      {
+        "title": "Testing",
+        "topics": ["Unit tests", "Debugging", "Code organisation"]
+      },
+      {
+        "title": "Capstone",
+        "topics": [
+          "Practical exercises",
+          "Guided implementation",
+          "Project application"
+        ]
+      }
+    ],
+    "roadmap": [
+      "Syntax",
+      "Logic",
+      "Data Structures",
+      "Functions",
+      "OOP",
+      "Files",
+      "APIs",
+      "Database",
+      "Testing",
+      "Automation",
+      "Real Project"
+    ],
+    "project": {
+      "title": "API & Automation Platform",
+      "problem": "Create a reliable API and reporting workflow that reads data, validates it and automates repetitive work."
+    },
+    "prerequisites": [
+      "A laptop with a stable internet connection",
+      "Willingness to practise between sessions"
+    ],
+    "audience": [
+      "College students",
+      "Graduates",
+      "Working professionals",
+      "Career switchers"
+    ]
+  }
+]

@@ -1,0 +1,864 @@
+.scroll-road {
+  position: relative;
+  width: 100%;
+  margin-top: 35px;
+}
+.road-pin {
+  position: sticky;
+  top: 83px;
+  height: calc(100svh - 83px);
+  min-height: 520px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: 25px;
+  overflow: hidden;
+}
+.road-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 26px;
+}
+.road-heading h2 {
+  font-size: clamp(25px, 2.8vw, 36px);
+}
+.road-heading .eyebrow {
+  margin-bottom: 8px;
+}
+.road-skip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  font-size: 13px;
+  color: var(--link);
+  padding: 10px;
+  border-radius: 6px;
+}
+.road-stage {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  align-items: stretch;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--surface);
+  min-height: 385px;
+}
+.road-view {
+  position: relative;
+  overflow: hidden;
+  min-width: 0;
+  min-height: 385px;
+  background: radial-gradient(
+    ellipse at center,
+    var(--surface-accent),
+    var(--surface)
+  );
+  isolation: isolate;
+}
+.road-start-label {
+  position: absolute;
+  left: 22px;
+  top: 22px;
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  color: var(--link);
+  font-size: 13px;
+  z-index: 2;
+}
+.road-svg {
+  position: absolute;
+  left: 0;
+  top: 35px;
+  max-width: none;
+  overflow: visible;
+  will-change: transform;
+}
+.road-shadow {
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 46;
+  stroke-linecap: round;
+}
+.road-asphalt {
+  fill: none;
+  stroke: #354a66;
+  stroke-width: 36;
+  stroke-linecap: round;
+}
+.road-dashes {
+  fill: none;
+  stroke: #e8f1ff;
+  stroke-width: 2;
+  stroke-dasharray: 10 10;
+  stroke-linecap: round;
+}
+.road-travelled {
+  fill: none;
+  stroke: #51afff;
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+.road-node circle {
+  fill: var(--surface-raised);
+  stroke: var(--icon);
+  stroke-width: 3;
+}
+.road-node text {
+  font-family: Manrope, sans-serif;
+  fill: var(--ink);
+  font-weight: 750;
+  font-size: 17px;
+}
+.road-node.current circle {
+  fill: #2e62ed;
+  stroke: #a1caff;
+  stroke-width: 6;
+  filter: drop-shadow(0 0 12px #397dff70);
+}
+.road-node.current > text:first-of-type {
+  fill: white;
+}
+.road-node.passed circle {
+  fill: var(--surface-accent);
+  stroke: #51afff;
+}
+.road-node text.road-node-label {
+  font-size: 12px;
+  fill: var(--muted);
+  font-weight: 650;
+}
+.road-node.current text.road-node-label {
+  fill: var(--link);
+}
+.road-scroll-hint {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 12px;
+  background: var(--surface);
+  padding: 6px;
+}
+.road-story {
+  background: var(--surface-raised);
+  padding: 30px 34px;
+  border-left: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 0;
+}
+.road-step {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 1.4px;
+  margin-bottom: 23px;
+}
+.road-step > span:first-child {
+  color: var(--link);
+  font-weight: 700;
+}
+.road-topic {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--link);
+  font-size: 14px;
+  margin-bottom: 13px;
+  font-weight: 600;
+}
+.road-story h3 {
+  font-size: 27px;
+  line-height: 1.3;
+  letter-spacing: -0.8px;
+}
+.road-story p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--muted);
+  margin-top: 16px;
+}
+.road-practice {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 22px;
+  color: var(--muted);
+  font-size: 12px;
+}
+.road-practice svg {
+  color: var(--icon);
+}
+.road-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 25px;
+}
+.road-controls button {
+  display: grid;
+  place-items: center;
+  min-width: 38px;
+  height: 38px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--link);
+  border-radius: 50%;
+}
+.road-controls button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+.road-meter {
+  height: 4px;
+  flex: 1;
+  background: var(--line);
+  overflow: hidden;
+  border-radius: 9px;
+}
+.road-meter span {
+  display: block;
+  background: var(--link);
+  height: 100%;
+  transition: width 0.25s;
+}
+.road-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 1px;
+  margin-top: 22px;
+}
+.road-end {
+  scroll-margin-top: 105px;
+  height: 1px;
+}
+.road-static {
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+}
+.road-static ol {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 24px;
+}
+.road-static li {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+.road-static li > span {
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  padding: 9px;
+  color: var(--link);
+  font-size: 12px;
+}
+.road-static h3 {
+  font-size: 20px;
+}
+.road-static p {
+  font-size: 14px;
+  color: var(--muted);
+  margin-top: 8px;
+}
+.sf-dashboard-scene {
+  position: relative;
+  min-width: 0;
+  padding: 38px 0 35px;
+}
+.sf-cloud-label {
+  position: absolute;
+  top: -6px;
+  left: 12px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  color: var(--link);
+  font-size: 17px;
+  font-weight: 700;
+}
+.sf-cloud-label strong {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.3px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-top: 2px;
+}
+.sf-dashboard {
+  background: var(--surface-raised);
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transform: perspective(1200px) rotateY(-5deg) rotateZ(-1deg);
+}
+.sf-dash-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 17px;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface);
+}
+.sf-dash-brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 650;
+}
+.sf-dash-brand svg {
+  color: var(--link);
+}
+.sf-dash-tools {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  color: var(--muted);
+}
+.sf-dash-tools > span {
+  display: grid;
+  place-items: center;
+  background: var(--surface-accent);
+  color: var(--link);
+  border: 1px solid var(--line);
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  font-size: 8px;
+}
+.sf-dash-app {
+  display: flex;
+}
+.sf-dash-app aside {
+  width: 47px;
+  border-right: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 26px;
+  padding: 20px 10px;
+  color: var(--icon);
+  background: var(--surface);
+}
+.sf-dash-main {
+  padding: 20px;
+  flex: 1;
+  min-width: 0;
+}
+.sf-dash-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.sf-dash-title > div > span {
+  font-size: 7px;
+  letter-spacing: 1px;
+  color: var(--muted);
+}
+.sf-dash-title h3 {
+  font-size: 16px;
+  margin-top: 5px;
+  letter-spacing: -0.4px;
+}
+.sf-dash-title > svg {
+  color: var(--icon);
+}
+.sf-dash-tabs {
+  display: flex;
+  gap: 22px;
+  margin-top: 17px;
+  border-bottom: 1px solid var(--line);
+}
+.sf-dash-tabs button {
+  font-size: 10px;
+  background: none;
+  color: var(--muted);
+  padding: 7px 0;
+  border-bottom: 2px solid transparent;
+}
+.sf-dash-tabs button[aria-selected="true"] {
+  color: var(--link);
+  border-color: var(--link);
+}
+.sf-dash-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 9px;
+  margin-top: 15px;
+}
+.sf-dash-stats > div {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 10px;
+  background: var(--surface);
+}
+.sf-dash-stats > div > span {
+  font-size: 9px;
+  color: var(--muted);
+}
+.sf-dash-stats strong {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-family: Manrope;
+  font-size: 23px;
+  color: var(--ink);
+  margin-top: 3px;
+}
+.sf-dash-stats small {
+  font-size: 8px;
+  color: var(--muted);
+  font-weight: 400;
+}
+.sf-dash-stats svg {
+  color: var(--icon);
+}
+.sf-dash-chart {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  margin-top: 12px;
+  padding: 13px;
+}
+.sf-dash-chart > div:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 9px;
+}
+.sf-dash-chart > div:first-child > span {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  color: var(--muted);
+  font-size: 8px;
+}
+.sf-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 7px;
+  height: 99px;
+  border-bottom: 1px solid var(--line);
+  padding-top: 10px;
+  background: repeating-linear-gradient(
+    to top,
+    transparent 0,
+    transparent 28px,
+    var(--line) 29px,
+    transparent 30px
+  );
+}
+.sf-bars > span {
+  flex: 1;
+  background: #5297ed;
+  border-radius: 3px 3px 0 0;
+  opacity: 0.85;
+}
+.sf-bars > span:nth-child(3n) {
+  background: #89b9f2;
+}
+.sf-chart-days {
+  display: flex;
+  justify-content: space-between;
+  font-size: 7px;
+  color: var(--muted);
+  margin-top: 6px;
+}
+.sf-dash-records {
+  display: grid;
+  margin-top: 12px;
+}
+.sf-dash-records > div {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--line);
+}
+.sf-dash-records > div:last-child {
+  border: 0;
+}
+.sf-record-icon {
+  padding: 6px;
+  border-radius: 5px;
+  background: var(--surface-accent);
+  color: var(--link);
+}
+.sf-dash-records strong {
+  display: block;
+  font-size: 9px;
+}
+.sf-dash-records small {
+  display: block;
+  font-size: 8px;
+  margin-top: 3px;
+  color: var(--muted);
+}
+.sf-record-status {
+  margin-left: auto;
+  color: var(--success-text);
+  background: var(--success-bg);
+  border-radius: 4px;
+  padding: 4px 6px;
+  font-size: 7px;
+  white-space: nowrap;
+}
+.sf-record-status.pending {
+  color: var(--link);
+  background: var(--surface-accent);
+}
+.sf-dash-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  color: var(--muted);
+  background: var(--surface);
+  padding: 9px 14px;
+  border-top: 1px solid var(--line);
+  font-size: 8px;
+}
+.sf-dash-bottom > span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.sf-dash-badge {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--line);
+  background: var(--surface-raised);
+  color: var(--link);
+  padding: 12px 15px;
+  border-radius: 9px;
+  box-shadow: var(--shadow);
+}
+.sf-dash-badge strong {
+  display: block;
+  font-size: 11px;
+}
+.sf-dash-badge span {
+  display: block;
+  font-size: 9px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+.sf-badge-flow {
+  bottom: 8px;
+  left: -18px;
+  transform: rotate(-3deg);
+}
+.sf-badge-lwc {
+  right: -12px;
+  top: 17px;
+  transform: rotate(5deg);
+}
+.sf-technology-strip {
+  flex-wrap: wrap;
+}
+.hero h1 {
+  font-size: clamp(44px, 4.3vw, 62px);
+}
+@media (max-width: 960px) {
+  .road-story {
+    padding: 24px;
+  }
+  .road-story h3 {
+    font-size: 23px;
+  }
+  .sf-dash-main {
+    padding: 13px;
+  }
+  .sf-dash-title h3 {
+    font-size: 13px;
+  }
+  .sf-dash-app aside {
+    width: 35px;
+    padding: 15px 7px;
+  }
+  .sf-dash-stats {
+    gap: 5px;
+  }
+  .sf-dash-stats > div {
+    padding: 8px;
+  }
+  .sf-dash-stats strong {
+    font-size: 20px;
+  }
+  .sf-record-status {
+    font-size: 6px;
+  }
+  .sf-dash-tools {
+    gap: 7px;
+  }
+  .sf-badge-lwc {
+    right: 0;
+  }
+  .sf-badge-flow {
+    left: 0;
+  }
+  .sf-dash-tabs {
+    gap: 17px;
+  }
+  .hero h1 {
+    font-size: 44px;
+  }
+}
+@media (max-width: 767px) {
+  .scroll-road {
+    margin-top: 0;
+  }
+  .road-pin {
+    top: 70px;
+    height: calc(100svh - 70px);
+    min-height: 0;
+    padding-block: 12px;
+    justify-content: center;
+  }
+  .road-heading {
+    margin-bottom: 12px;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .road-heading h2 {
+    font-size: 21px;
+    line-height: 1.3;
+  }
+  .road-heading .eyebrow {
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+  .road-skip {
+    font-size: 10px;
+    padding: 6px 0;
+    gap: 3px;
+  }
+  .road-stage {
+    grid-template-columns: 1fr;
+    min-height: 0;
+    flex-shrink: 1;
+    border-radius: 13px;
+  }
+  .road-view {
+    min-height: 0;
+    height: 210px;
+  }
+  .road-svg {
+    top: 0;
+  }
+  .road-start-label {
+    font-size: 10px;
+    left: 12px;
+    top: 12px;
+    background: var(--surface);
+    padding: 5px 7px;
+    border-radius: 5px;
+  }
+  .road-start-label svg {
+    width: 14px;
+  }
+  .road-scroll-hint {
+    font-size: 10px;
+    bottom: 0;
+    padding: 4px;
+  }
+  .road-story {
+    border-left: 0;
+    border-top: 1px solid var(--line);
+    padding: 18px;
+  }
+  .road-step {
+    margin-bottom: 12px;
+    font-size: 9px;
+  }
+  .road-topic {
+    font-size: 12px;
+    margin-bottom: 9px;
+  }
+  .road-topic svg {
+    width: 17px;
+  }
+  .road-story h3 {
+    font-size: 22px;
+  }
+  .road-story p {
+    font-size: 13px;
+    line-height: 1.65;
+    margin-top: 10px;
+  }
+  .road-practice {
+    margin-top: 12px;
+    font-size: 11px;
+  }
+  .road-controls {
+    margin-top: 14px;
+  }
+  .road-controls button {
+    min-width: 34px;
+    height: 34px;
+  }
+  .road-footer {
+    margin-top: 10px;
+    font-size: 9px;
+    letter-spacing: 0.3px;
+  }
+  .road-footer > span:first-child {
+    display: none;
+  }
+  .road-footer > span:last-child {
+    margin-left: auto;
+  }
+  .sf-dashboard-scene {
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+    padding-top: 43px;
+  }
+  .sf-dashboard {
+    transform: none;
+  }
+  .sf-dash-main {
+    padding: 14px;
+  }
+  .sf-dash-title h3 {
+    font-size: 14px;
+  }
+  .sf-dash-tabs button {
+    font-size: 11px;
+  }
+  .sf-dash-stats > div > span {
+    font-size: 10px;
+  }
+  .sf-dash-records strong {
+    font-size: 10px;
+  }
+  .sf-dash-records small {
+    font-size: 9px;
+  }
+  .sf-record-status {
+    font-size: 8px;
+  }
+  .sf-badge-lwc {
+    font-size: 10px;
+    top: 4px;
+    padding: 9px;
+  }
+  .sf-cloud-label {
+    font-size: 15px;
+    top: -5px;
+    left: 0;
+  }
+  .sf-cloud-label strong {
+    font-size: 9px;
+  }
+  .sf-cloud-label > svg {
+    width: 24px;
+  }
+  .sf-badge-flow {
+    left: 6px;
+  }
+  .hero h1 {
+    font-size: 42px;
+  }
+  .sf-technology-strip > div {
+    display: flex !important;
+    font-size: 14px;
+  }
+  .sf-technology-strip {
+    gap: 18px;
+  }
+}
+@media (max-height: 740px) and (max-width: 767px) {
+  .road-heading h2 {
+    font-size: 18px;
+  }
+  .road-view {
+    height: 150px;
+  }
+  .road-svg {
+    top: -35px;
+  }
+  .road-story {
+    padding: 13px 16px;
+  }
+  .road-step {
+    margin-bottom: 8px;
+  }
+  .road-story h3 {
+    font-size: 19px;
+  }
+  .road-story p {
+    font-size: 12px;
+    line-height: 1.5;
+    margin-top: 7px;
+  }
+  .road-practice {
+    display: none;
+  }
+  .road-controls {
+    margin-top: 10px;
+  }
+  .road-pin {
+    padding-block: 8px;
+  }
+  .road-heading {
+    margin-bottom: 8px;
+  }
+  .road-footer {
+    margin-top: 5px;
+  }
+}
+@media (max-height: 580px) {
+  .road-pin {
+    position: relative;
+    top: auto;
+    height: auto;
+    min-height: 0;
+  }
+  .scroll-road {
+    height: auto !important;
+  }
+  .road-stage {
+    min-height: 0;
+  }
+  .road-story {
+    min-height: 320px;
+  }
+  .road-skip {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sf-dashboard {
+    transform: none;
+  }
+  .road-meter span {
+    transition: none;
+  }
+}

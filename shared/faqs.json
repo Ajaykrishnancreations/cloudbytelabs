@@ -1,0 +1,72 @@
+[
+  {
+    "q": "Can beginners join?",
+    "a": "Yes. Each program starts with the fundamentals and builds toward practical projects. A mentor can help you choose a suitable starting point.",
+    "category": "Eligibility"
+  },
+  {
+    "q": "Can working professionals attend?",
+    "a": "Morning, evening and flexible learning options are planned for students and working professionals. Contact us to confirm the current batch schedule.",
+    "category": "Class Timings"
+  },
+  {
+    "q": "Are the classes live?",
+    "a": "The programs are designed around live, instructor-led sessions, guided practice and mentor feedback.",
+    "category": "Courses"
+  },
+  {
+    "q": "Will I work on real projects?",
+    "a": "Yes. Every learning path includes assignments and a capstone project, with reviews and support for your portfolio.",
+    "category": "Projects"
+  },
+  {
+    "q": "Does Salesforce include Admin, Apex and LWC?",
+    "a": "Yes. The curriculum covers administration, security, Flow, Apex, SOQL, Lightning Web Components, integration, testing and code quality.",
+    "category": "Courses"
+  },
+  {
+    "q": "Will MERN cover frontend and backend?",
+    "a": "Yes. You will learn React, Node.js, Express and MongoDB, plus APIs, authentication, testing and deployment.",
+    "category": "Courses"
+  },
+  {
+    "q": "Will UI/UX include Figma?",
+    "a": "Yes. Figma, user research, information architecture, design systems, accessibility, prototypes and developer handoff are included.",
+    "category": "Courses"
+  },
+  {
+    "q": "Do I need coding experience for Python?",
+    "a": "No previous programming experience is required. Start with syntax and problem-solving, then move into APIs, testing and automation.",
+    "category": "Experience"
+  },
+  {
+    "q": "What career support is included?",
+    "a": "The learning path includes resume and portfolio guidance, mock interviews and career preparation. Employment is not guaranteed.",
+    "category": "Career Support"
+  },
+  {
+    "q": "What are the course fees and payment options?",
+    "a": "Fees and payment arrangements are confirmed by the team. Call or WhatsApp us for the latest information; prices are not published yet.",
+    "category": "Payments"
+  },
+  {
+    "q": "Will I receive a certification?",
+    "a": "Contact the team to confirm current completion certificate arrangements. External vendor certification exams are separate and are not promised as part of a course.",
+    "category": "Certifications"
+  },
+  {
+    "q": "What equipment do I need?",
+    "a": "A laptop or desktop with a stable internet connection, a modern browser, and permission to install course tools. Your mentor will guide you through setup.",
+    "category": "Technical Requirements"
+  },
+  {
+    "q": "Who will teach me?",
+    "a": "Training focuses on practical industry workflows. Contact us to meet the mentor for your selected program; individual trainer profiles are pending approval.",
+    "category": "Trainers"
+  },
+  {
+    "q": "Will I learn testing and code quality?",
+    "a": "Yes. Code reviews, debugging and testing are part of practical development. Salesforce also includes Apex tests, LWC Jest, PMD, ESLint and CI validation.",
+    "category": "Courses"
+  }
+]

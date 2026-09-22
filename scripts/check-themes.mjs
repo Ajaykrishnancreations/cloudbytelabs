@@ -1,0 +1,10 @@
+import {chromium} from 'playwright';
+import AxeBuilder from '@axe-core/playwright';
+const browser=await chromium.launch({headless:true});const context=await browser.newContext({viewport:{width:1440,height:1000},colorScheme:'light'});const page=await context.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
+for(const theme of ['light','dark']){
+ await page.goto('http://127.0.0.1:5173/');const toggle=page.getByRole('switch',{name:'Dark mode'});if((await toggle.getAttribute('aria-checked'))!==(theme==='dark'?'true':'false'))await toggle.click();await page.reload();if(await page.locator('html').getAttribute('data-theme')!==theme)errors.push('Theme persistence failed');await page.waitForTimeout(400);await page.screenshot({path:`/tmp/cloudbyte-${theme}-theme.png`});
+ for(const route of ['/','/about','/contact','/courses/salesforce']){await page.goto('http://127.0.0.1:5173'+route);await page.waitForSelector('h1');await page.waitForTimeout(300);const result=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa']).analyze();for(const v of result.violations)errors.push({theme,route,id:v.id,nodes:v.nodes.map(n=>({target:n.target,message:n.failureSummary}))});}
+ for(const width of [320,390,768,1024,1440]){await page.setViewportSize({width,height:900});for(const route of ['/','/contact']){await page.goto('http://127.0.0.1:5173'+route);await page.waitForSelector('h1');const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1);if(overflow)errors.push(`${theme} overflow ${width} ${route}`)}}
+ await page.setViewportSize({width:390,height:844});await page.goto('http://127.0.0.1:5173/');await page.getByRole('button',{name:'Chat with us'}).click();const result=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa']).analyze();for(const v of result.violations)errors.push({theme,route:'chat',id:v.id,nodes:v.nodes.map(n=>n.target)});await page.getByRole('button',{name:'Close',exact:true}).click();await page.setViewportSize({width:1440,height:1000});
+}
+console.log(JSON.stringify({errors},null,2));await browser.close();if(errors.length)process.exitCode=1;
