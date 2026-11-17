@@ -1,0 +1,289 @@
+/* CloudLight Solutions brand layer: logo, gold accent, services band and motion. */
+:root[data-theme="light"] {
+  --gold: #e09a12;
+  --gold-soft: #fff4dc;
+  --brand-light: linear-gradient(100deg, #12aef5, #1f63f0);
+  --heading-gradient: linear-gradient(100deg, #1a8fe6, #1f5ce8 45%, #e09a12 55%, #1f5ce8 65%, #1a8fe6);
+}
+:root[data-theme="dark"] {
+  --page: #06132e;
+  --surface: #0b1d3d;
+  --surface-raised: #0f2448;
+  --nav-bg: #06132ef2;
+  --hero-bg:
+    radial-gradient(ellipse at 80% 45%, #1a3f8a66 0, transparent 62%), #06132e;
+  --gold: #ffc247;
+  --gold-soft: #3a2a0c;
+  --brand-light: linear-gradient(100deg, #3fd0ff, #3e86ff);
+  --heading-gradient: linear-gradient(100deg, #5cc8ff, #6f9dff 45%, #ffc247 55%, #6f9dff 65%, #5cc8ff);
+}
+
+/* Logo */
+.logo {
+  gap: 10px;
+  letter-spacing: -0.6px;
+}
+.logo-mark {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 1.8em;
+  height: 1.8em;
+  flex: none;
+  border-radius: 0.42em;
+  background: radial-gradient(circle at 50% 30%, #0f2d66, #06132e 70%);
+  box-shadow:
+    0 4px 14px #06132e33,
+    inset 0 0 0 1px #2c57a855;
+}
+.logo-mark img {
+  width: 82%;
+  height: auto;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.logo:hover .logo-mark img {
+  transform: translateY(-2px) rotate(-3deg) scale(1.04);
+}
+.logo-spark {
+  position: absolute;
+  top: 12%;
+  right: 9%;
+  width: 0.42em;
+  height: 0.42em;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff 0, #ffd36b 35%, transparent 70%);
+  animation: logo-twinkle 3.2s ease-in-out infinite;
+  pointer-events: none;
+}
+.logo-word {
+  display: inline-flex;
+  flex-direction: column;
+  line-height: 1;
+}
+.logo-light {
+  background: var(--brand-light, linear-gradient(100deg, #12aef5, #1f63f0));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.logo-word small {
+  margin-top: 3px;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 0.36em;
+  font-weight: 600;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--muted, #586b86);
+}
+@keyframes logo-twinkle {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.6);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.25);
+  }
+}
+
+/* Hero headline: slow gold light sweep across the gradient text */
+:root[data-theme] .hero h1 > span {
+  background-size: 300% 100%;
+  animation: light-sweep 7s ease-in-out infinite;
+}
+@keyframes light-sweep {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+:root[data-theme] .hero-eyebrow > span {
+  background: var(--gold);
+  box-shadow: 0 0 0 0 var(--gold);
+  animation: gold-pulse 2.4s ease-out infinite;
+}
+@keyframes gold-pulse {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--gold) 60%, transparent);
+  }
+  100% {
+    box-shadow: 0 0 0 10px transparent;
+  }
+}
+
+/* Services band */
+.services-band {
+  position: relative;
+  overflow: hidden;
+  padding: 72px 0 80px;
+  color: #eaf2ff;
+  background:
+    radial-gradient(ellipse at 50% 0%, #1b4fb855 0, transparent 60%),
+    linear-gradient(180deg, #06132e, #04102a);
+}
+.services-glow {
+  position: absolute;
+  left: 50%;
+  top: 118px;
+  width: 260px;
+  height: 2px;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, transparent, #ffc247, transparent);
+  box-shadow: 0 0 18px 2px #ffb02088;
+  animation: glow-breathe 4s ease-in-out infinite;
+}
+@keyframes glow-breathe {
+  0%,
+  100% {
+    opacity: 0.55;
+    width: 200px;
+  }
+  50% {
+    opacity: 1;
+    width: 320px;
+  }
+}
+.services-head {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 44px;
+}
+.services-motto {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: #b9c9e6;
+}
+.services-motto i {
+  width: 1px;
+  height: 12px;
+  background: #4c6491;
+}
+.services-head h2 {
+  margin-top: 34px;
+  font-family: Manrope, sans-serif;
+  font-size: clamp(26px, 3.4vw, 38px);
+  line-height: 1.15;
+  letter-spacing: -1px;
+  color: #fff;
+}
+.services-head h2 span {
+  display: block;
+  background: linear-gradient(100deg, #5cc8ff, #3e86ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.services-grid li {
+  position: relative;
+  padding: 22px 12px;
+  text-align: center;
+  border-radius: 14px;
+  transition:
+    background 0.3s,
+    box-shadow 0.3s;
+}
+.services-grid li + li:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 18%;
+  height: 64%;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, #2a447a, transparent);
+}
+.services-grid li:hover {
+  background: #0f2756;
+  box-shadow: 0 14px 36px #00000055, inset 0 0 0 1px #2c57a8;
+}
+.service-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  margin-bottom: 14px;
+  border-radius: 14px;
+  color: #3fb6ff;
+  background: #3e86ff14;
+  transition:
+    color 0.3s,
+    background 0.3s,
+    transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.services-grid li:hover .service-icon {
+  color: #ffc247;
+  background: #ffc2471a;
+  transform: rotate(-6deg) scale(1.08);
+}
+.services-grid h3 {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff;
+}
+.services-grid p {
+  margin-top: 8px;
+  font-size: 13px;
+  color: #a9bad6;
+}
+.footer-motto {
+  letter-spacing: 0.08em;
+}
+@media (max-width: 1100px) {
+  .services-grid {
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 10px;
+  }
+  .services-grid li:nth-child(4n + 1):before {
+    display: none;
+  }
+}
+@media (max-width: 640px) {
+  .services-band {
+    padding: 56px 0 60px;
+  }
+  .services-motto {
+    gap: 8px;
+    font-size: 9px;
+    letter-spacing: 0.24em;
+  }
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .services-grid li:before {
+    display: none;
+  }
+  .services-grid li:last-child {
+    grid-column: 1 / -1;
+  }
+}
+.chat-brand {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  flex: none;
+  border-radius: 11px;
+  background: #06132e;
+  box-shadow: inset 0 0 0 1px #2c57a866;
+}
+.chat-brand img {
+  width: 30px;
+  height: auto;
+}

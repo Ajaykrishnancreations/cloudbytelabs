@@ -143,7 +143,9 @@ export default function Chat() {
           aria-label={t("assistant")}
         >
           <div className="chat-header">
-            <Bot size={25} />
+            <span className="chat-brand" aria-hidden="true">
+              <img src="/brand/cloudlight-mark-128.webp" alt="" />
+            </span>
             <div>
               <strong>{t("assistant")}</strong>
               <small>{t("chatOffline")}</small>

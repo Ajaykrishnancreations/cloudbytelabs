@@ -253,7 +253,7 @@ export default function Contact() {
           {site.demoContact && (
             <p className="notice">
               {t("demo")} The phone and WhatsApp number are supplied by
-              CloudByteLabs.
+              CloudLight Solutions.
             </p>
           )}
           <p className="notice">{t("fees")}</p>

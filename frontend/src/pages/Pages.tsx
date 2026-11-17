@@ -289,7 +289,7 @@ function About() {
           <p>
             {t("aboutBody", {
               defaultValue:
-                "CloudByteLabs is built around a simple idea: learning technology should prepare you to use it. Our programs connect fundamentals to the decisions, tools and workflows used in real development.",
+                "CloudLight Solutions is built around a simple idea: learning technology should prepare you to use it. Our programs connect fundamentals to the decisions, tools and workflows used in real development.",
             })}
           </p>
           <p>
@@ -493,7 +493,7 @@ function Legal({ terms = false }: { terms?: boolean }) {
   return (
     <>
       <PageHero
-        eyebrow="CloudByteLabs"
+        eyebrow="CloudLight Solutions"
         title={t(terms ? "terms" : "privacy")}
         description={
           terms
@@ -508,7 +508,7 @@ function Legal({ terms = false }: { terms?: boolean }) {
             <p>
               This website describes intended learning paths. Confirm fees,
               availability, session schedules, trainers, delivery arrangements
-              and enrollment terms with CloudByteLabs before making a payment.
+              and enrollment terms with CloudLight Solutions before making a payment.
               This site does not collect payments.
             </p>
             <h2>Career support</h2>

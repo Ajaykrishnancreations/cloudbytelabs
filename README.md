@@ -1,4 +1,4 @@
-# CloudByteLabs
+# CloudLight Solutions
 
 A React + Vite + TypeScript training website with an Express API. Salesforce is the flagship course, alongside MERN Stack, UI/UX Design and Python. Built from the supplied requirements, preserved in `docs/requirements.md`.
 

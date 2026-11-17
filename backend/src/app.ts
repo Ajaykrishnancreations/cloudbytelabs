@@ -141,7 +141,7 @@ async function notifyLead(lead: Lead) {
     from: process.env.SMTP_FROM,
     to: process.env.LEAD_NOTIFY_EMAIL,
     replyTo: lead.email,
-    subject: `CloudByteLabs enquiry: ${lead.course}`,
+    subject: `CloudLight Solutions enquiry: ${lead.course}`,
     text: JSON.stringify(lead, null, 2),
   });
 }

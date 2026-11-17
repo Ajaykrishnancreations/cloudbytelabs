@@ -34,7 +34,7 @@ const en = {
   sfDescription:
     "Learn how professional Salesforce teams configure, develop, test and deliver applications. From your first object to your first production-style project.",
   sfAction: "Explore Salesforce program",
-  why: "THE CLOUDBYTE DIFFERENCE",
+  why: "THE CLOUDLIGHT DIFFERENCE",
   whyTitle: "Built around the way the industry works.",
   whyDescription:
     "Less passive watching. More hands-on building, thoughtful feedback and real progress.",
@@ -77,7 +77,7 @@ const en = {
   contactTitle: "Let’s build your next chapter.",
   contactDescription:
     "Tell us a little about your goals. We’ll help you find a learning path that fits.",
-  assistant: "CloudByte Assistant",
+  assistant: "CloudLight Assistant",
   assistantWelcome:
     "Hi! I can help you explore our courses, curriculum and career support. What would you like to learn?",
   chatPlaceholder: "Ask about a course…",
@@ -192,7 +192,7 @@ const ta = {
   contactTitle: "உங்கள் அடுத்த பயணத்தைத் தொடங்குவோம்.",
   contactDescription:
     "உங்கள் இலக்குகளைப் பகிருங்கள். உங்களுக்கு ஏற்ற படிப்பைத் தேர்ந்தெடுக்க உதவுகிறோம்.",
-  assistant: "CloudByte உதவியாளர்",
+  assistant: "CloudLight உதவியாளர்",
   assistantWelcome:
     "வணக்கம்! படிப்புகள், பாடத்திட்டம் மற்றும் வேலைவாய்ப்பு வழிகாட்டல் குறித்து உதவுகிறேன். என்ன கற்க விரும்புகிறீர்கள்?",
   chatPlaceholder: "படிப்பைப் பற்றி கேளுங்கள்…",
@@ -304,7 +304,7 @@ const hi = {
     "मैंने गोपनीयता सूचना पढ़ी है और अपने प्रश्न के संबंध में संपर्क की सहमति देता हूँ।",
   contactTitle: "अपने अगले अध्याय की शुरुआत करें।",
   contactDescription: "अपने लक्ष्य बताएँ। हम सही कोर्स चुनने में मदद करेंगे।",
-  assistant: "CloudByte सहायक",
+  assistant: "CloudLight सहायक",
   assistantWelcome:
     "नमस्ते! मैं कोर्स, पाठ्यक्रम और करियर सहायता की जानकारी दे सकता हूँ। आप क्या सीखना चाहेंगे?",
   chatPlaceholder: "कोर्स के बारे में पूछें…",
@@ -416,7 +416,7 @@ const ml = {
   contactTitle: "അടുത്ത അധ്യായം ആരംഭിക്കാം.",
   contactDescription:
     "നിങ്ങളുടെ ലക്ഷ്യങ്ങൾ പറയൂ. അനുയോജ്യമായ പഠനപാത കണ്ടെത്താം.",
-  assistant: "CloudByte സഹായി",
+  assistant: "CloudLight സഹായി",
   assistantWelcome:
     "നമസ്കാരം! കോഴ്‌സുകൾ, പാഠ്യപദ്ധതി, കരിയർ സഹായം എന്നിവയെക്കുറിച്ച് ചോദിക്കൂ.",
   chatPlaceholder: "കോഴ്‌സിനെക്കുറിച്ച് ചോദിക്കൂ…",
@@ -527,7 +527,7 @@ const kn = {
   contactTitle: "ನಿಮ್ಮ ಮುಂದಿನ ಅಧ್ಯಾಯ ಆರಂಭಿಸೋಣ.",
   contactDescription:
     "ನಿಮ್ಮ ಗುರಿಗಳನ್ನು ಹಂಚಿಕೊಳ್ಳಿ. ಸೂಕ್ತ ಕಲಿಕೆಯ ಮಾರ್ಗ ಕಂಡುಕೊಳ್ಳೋಣ.",
-  assistant: "CloudByte ಸಹಾಯಕ",
+  assistant: "CloudLight ಸಹಾಯಕ",
   assistantWelcome:
     "ನಮಸ್ಕಾರ! ಕೋರ್ಸ್‌ಗಳು, ಪಠ್ಯಕ್ರಮ ಮತ್ತು ವೃತ್ತಿ ಸಹಾಯದ ಬಗ್ಗೆ ಕೇಳಿ.",
   chatPlaceholder: "ಕೋರ್ಸ್ ಬಗ್ಗೆ ಕೇಳಿ…",

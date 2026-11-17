@@ -152,21 +152,6 @@ img {
   letter-spacing: -0.8px;
   white-space: nowrap;
 }
-.logo-icon {
-  background: #2e62ed;
-  color: white;
-  display: grid;
-  place-items: center;
-  width: 35px;
-  height: 35px;
-  border-radius: 9px;
-}
-.logo-light {
-  font-weight: 450;
-}
-.logo-period {
-  color: #6092ff;
-}
 .header {
   height: 83px;
   position: sticky;
@@ -2495,10 +2480,6 @@ img {
   .logo {
     font-size: 21px;
   }
-  .logo-icon {
-    width: 31px;
-    height: 31px;
-  }
   .hero h1 {
     font-size: 39px;
   }
@@ -2598,10 +2579,6 @@ img {
   .header .logo {
     font-size: 18px;
     gap: 6px;
-  }
-  .header .logo-icon {
-    width: 28px;
-    height: 28px;
   }
   .header-actions {
     gap: 5px;

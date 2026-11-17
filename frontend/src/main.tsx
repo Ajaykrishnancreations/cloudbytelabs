@@ -6,6 +6,7 @@ import "./i18n";
 import "./styles.css";
 import "./themes.css";
 import "./roadmap.css";
+import "./brand.css";
 import App from "./App";
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>

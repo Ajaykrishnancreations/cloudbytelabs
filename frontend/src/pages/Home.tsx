@@ -25,6 +25,7 @@ import {
 } from "../components/UI";
 import { courses } from "../data/site";
 import SalesforceDashboard from "../components/SalesforceDashboard";
+import Services from "../components/Services";
 export function CodeWindow() {
   const [tab, setTab] = useState("LWC");
   const samples: Record<string, string> = {
@@ -155,6 +156,7 @@ export default function Home() {
           <div>SOQL</div>
         </div>
       </section>
+      <Services />
       <section className="section container" id="courses">
         <SectionHeading
           eyebrow={t("programs")}

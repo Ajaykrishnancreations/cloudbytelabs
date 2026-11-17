@@ -10,12 +10,19 @@ import {
   ArrowDown,
   ArrowLeft,
   ArrowRight,
+  Award,
+  BriefcaseBusiness,
   Check,
   Cloud,
   Flag,
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { courses, track } from "../data/site";
+import Celebration, { type CelebrationKind } from "./Celebration";
+const celebrations: Record<string, CelebrationKind> = {
+  "Get Certified": "certificate",
+  "Got the Job": "job",
+};
 const descriptions: Record<string, [string, string]> = {
   Basics: [
     "Understand the Salesforce ecosystem",
@@ -65,9 +72,17 @@ const descriptions: Record<string, [string, string]> = {
     "Connect everything in one real project",
     "Build a customer service application with objects, security, Flow, Apex, LWC, reports and tests. Review and improve it with your mentor.",
   ],
+  "Get Certified": [
+    "Celebrate completing the program",
+    "Wrap up your capstone, collect your course completion certificate and plan the Salesforce certification exam you want to take next. Vendor exams are booked separately.",
+  ],
   "Interview Prep": [
     "Explain what you built and why",
     "Prepare your portfolio, practise technical interviews and learn to communicate your decisions. Career support, without unrealistic guarantees.",
+  ],
+  "Got the Job": [
+    "Step into your first Salesforce role",
+    "This is the goal every milestone builds toward. Walk into interviews with a real project, a portfolio and practised answers. We support your search; the offer is yours to win.",
   ],
 };
 export default function ScrollRoadmap({ items }: { items: string[] }) {
@@ -89,7 +104,11 @@ export default function ScrollRoadmap({ items }: { items: string[] }) {
     () => matchMedia("(max-width:767px)").matches,
   );
   const [width, setWidth] = useState(600);
+  const [viewHeight, setViewHeight] = useState(300);
   const [active, setActive] = useState(0);
+  const [celebrating, setCelebrating] = useState<CelebrationKind | null>(null);
+  const previous = useRef(0);
+  const celebrated = useRef(new Set<number>());
   const finished = useRef(false);
   useEffect(() => {
     const mq = matchMedia("(max-width:767px)");
@@ -99,9 +118,10 @@ export default function ScrollRoadmap({ items }: { items: string[] }) {
   }, []);
   useEffect(() => {
     if (!view.current) return;
-    const observer = new ResizeObserver(([entry]) =>
-      setWidth(entry.contentRect.width),
-    );
+    const observer = new ResizeObserver(([entry]) => {
+      setWidth(entry.contentRect.width);
+      setViewHeight((entry.target as HTMLElement).clientHeight);
+    });
     observer.observe(view.current);
     return () => observer.disconnect();
   }, [reduced, compact]);
@@ -111,7 +131,21 @@ export default function ScrollRoadmap({ items }: { items: string[] }) {
   });
   useMotionValueEvent(scrollYProgress, "change", (value) => {
     const next = Math.round(value * (items.length - 1));
+    const prev = previous.current;
+    previous.current = next;
     setActive(next);
+    // Celebrate only when scrolling forward onto a milestone step by step,
+    // not when jumping in from below or via "Skip roadmap".
+    if (next > prev && next - prev <= 2) {
+      for (let i = prev + 1; i <= next; i++) {
+        const kind = celebrations[items[i]];
+        if (kind && !celebrated.current.has(i)) {
+          celebrated.current.add(i);
+          setCelebrating(kind);
+          track("roadmap_celebration", { milestone: items[i] });
+        }
+      }
+    }
     if (value > 0.99 && !finished.current) {
       finished.current = true;
       track("roadmap_complete", { roadmap: items[0] || "learning" });
@@ -141,7 +175,9 @@ export default function ScrollRoadmap({ items }: { items: string[] }) {
   const y = useTransform(
     scrollYProgress,
     [0, 1],
-    mobile ? [40, 120 - points.at(-1)!.y] : [0, 0],
+    mobile
+      ? [viewHeight * 0.46 - points[0].y, viewHeight * 0.46 - points.at(-1)!.y]
+      : [0, 0],
   );
   const current = items[active];
   const known = descriptions[current];
@@ -236,7 +272,7 @@ export default function ScrollRoadmap({ items }: { items: string[] }) {
                   <g
                     key={items[i]}
                     transform={`translate(${point.x},${point.y})`}
-                    className={`road-node ${i === active ? "current" : ""} ${i < active ? "passed" : ""}`}
+                    className={`road-node ${i === active ? "current" : ""} ${i < active ? "passed" : ""} ${celebrations[items[i]] ? "goal" : ""}`}
                   >
                     <circle r={i === active ? 30 : 23} />
                     <text textAnchor="middle" dy="6">
@@ -273,7 +309,11 @@ export default function ScrollRoadmap({ items }: { items: string[] }) {
                 transition={{ duration: 0.25 }}
               >
                 <span className="road-topic">
-                  {active === items.length - 1 ? (
+                  {celebrations[current] === "certificate" ? (
+                    <Award size={20} />
+                  ) : celebrations[current] === "job" ? (
+                    <BriefcaseBusiness size={20} />
+                  ) : active === items.length - 1 ? (
                     <Flag size={20} />
                   ) : (
                     <Cloud size={20} />
@@ -327,6 +367,13 @@ export default function ScrollRoadmap({ items }: { items: string[] }) {
         </div>
       </div>
       <div id={`road-end-${id}`} className="road-end" tabIndex={-1} />
+      {celebrating && (
+        <Celebration
+          key={celebrating}
+          kind={celebrating}
+          onDone={() => setCelebrating(null)}
+        />
+      )}
     </>
   );
 }

@@ -12,7 +12,7 @@ export const site = {
     !import.meta.env.VITE_CONTACT_EMAIL ||
     import.meta.env.VITE_CONTACT_EMAIL.endsWith("@example.com"),
   url: import.meta.env.VITE_SITE_URL || "https://cloudbytelabs.com",
-  whatsapp: `https://wa.me/${phone.replace(/\D/g, "")}?text=${encodeURIComponent("Hi CloudByteLabs, I'm interested in learning more about your courses.")}`,
+  whatsapp: `https://wa.me/${phone.replace(/\D/g, "")}?text=${encodeURIComponent("Hi CloudLight Solutions, I'm interested in learning more about your courses.")}`,
 };
 export { default as faqs } from "../../../shared/faqs.json";
 export const learningSteps = [

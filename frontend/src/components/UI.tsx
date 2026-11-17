@@ -190,7 +190,7 @@ export function ProjectPreview({ index = 0 }: { index?: number }) {
         <span />
         <span />
         <div>
-          cloudbyte /{" "}
+          cloudlight /{" "}
           {["service-hub", "storefront", "design-studio", "automate"][index]}
         </div>
       </div>

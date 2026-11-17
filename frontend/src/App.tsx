@@ -20,8 +20,8 @@ export default function App() {
             .filter(Boolean)
             .at(-1)!
             .replaceAll("-", " ");
-    document.title = `${name.charAt(0).toUpperCase() + name.slice(1)} | CloudByteLabs`;
-    const description = `${name} at CloudByteLabs. Practical Salesforce, MERN Stack, UI/UX and Python training, real projects, mentor guidance and career preparation.`;
+    document.title = `${name.charAt(0).toUpperCase() + name.slice(1)} | CloudLight Solutions`;
+    const description = `${name} at CloudLight Solutions. Practical Salesforce, MERN Stack, UI/UX and Python training, real projects, mentor guidance and career preparation.`;
     for (const [attr, key, value] of [
       ["name", "description", description],
       ["property", "og:title", document.title],

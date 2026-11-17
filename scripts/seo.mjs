@@ -24,7 +24,7 @@ const routes = [
   ]),
   [
     "/about",
-    "About CloudByteLabs",
+    "About CloudLight Solutions",
     "Practical technology training built around real industry experience.",
   ],
   [
@@ -35,12 +35,12 @@ const routes = [
   [
     "/trainers",
     "Industry mentorship",
-    "Explore CloudByteLabs mentorship in Salesforce, MERN, UI/UX and Python.",
+    "Explore CloudLight Solutions mentorship in Salesforce, MERN, UI/UX and Python.",
   ],
   [
     "/projects",
     "Learn by building",
-    "Explore the capstone projects in every CloudByteLabs technology learning path.",
+    "Explore the capstone projects in every CloudLight Solutions technology learning path.",
   ],
   [
     "/career-support",
@@ -54,7 +54,7 @@ const routes = [
   ],
   [
     "/contact",
-    "Contact CloudByteLabs",
+    "Contact CloudLight Solutions",
     "Call +91 63821 24970 or request a callback to discuss your next learning step.",
   ],
   [
@@ -65,7 +65,7 @@ const routes = [
   [
     "/privacy",
     "Privacy",
-    "How CloudByteLabs handles contact information, chat messages and optional analytics.",
+    "How CloudLight Solutions handles contact information, chat messages and optional analytics.",
   ],
   ["/terms", "Terms", "Website information and course enquiry terms."],
 ];
@@ -79,12 +79,12 @@ const escape = (s) =>
   );
 const template = await readFile("frontend/dist/index.html", "utf8");
 for (const [path, name, description] of routes) {
-  const title = `${name} | CloudByteLabs`;
+  const title = `${name} | CloudLight Solutions`;
   const graph = [
     {
       "@type": "Organization",
       "@id": `${origin}/#organization`,
-      name: "CloudByteLabs",
+      name: "CloudLight Solutions",
       url: origin,
       telephone: process.env.VITE_PHONE || "+916382124970",
     },
@@ -120,7 +120,7 @@ for (const [path, name, description] of routes) {
         acceptedAnswer: { "@type": "Answer", text: f.a },
       })),
     });
-  const metadata = `<link rel="canonical" href="${origin}${path}"/><meta property="og:type" content="website"/><meta property="og:title" content="${escape(title)}"/><meta property="og:description" content="${escape(description)}"/><meta property="og:url" content="${origin}${path}"/><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="${escape(title)}"/><meta name="twitter:description" content="${escape(description)}"/><script type="application/ld+json">${JSON.stringify({ "@context": "https://schema.org", "@graph": graph }).replace(/</g, "\\u003c")}</script>`;
+  const metadata = `<link rel="canonical" href="${origin}${path}"/><meta property="og:type" content="website"/><meta property="og:title" content="${escape(title)}"/><meta property="og:description" content="${escape(description)}"/><meta property="og:url" content="${origin}${path}"/><meta property="og:image" content="${origin}/brand/og-image.jpg"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:image" content="${origin}/brand/og-image.jpg"/><meta name="twitter:title" content="${escape(title)}"/><meta name="twitter:description" content="${escape(description)}"/><script type="application/ld+json">${JSON.stringify({ "@context": "https://schema.org", "@graph": graph }).replace(/</g, "\\u003c")}</script>`;
   const html = template
     .replace(/<title>.*?<\/title>/, `<title>${escape(title)}</title>`)
     .replace(

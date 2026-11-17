@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import {
-  Code2,
   Menu,
   X,
   ChevronDown,
@@ -17,13 +16,21 @@ import { courseIcons } from "./UI";
 import ThemeToggle from "./ThemeToggle";
 export function Logo() {
   return (
-    <Link className="logo" to="/" aria-label="CloudByteLabs home">
-      <span className="logo-icon">
-        <Code2 size={23} />
+    <Link className="logo" to="/" aria-label="CloudLight Solutions home">
+      <span className="logo-mark">
+        <img
+          src="/brand/cloudlight-mark-128.webp"
+          alt=""
+          width="128"
+          height="87"
+        />
+        <i className="logo-spark" aria-hidden="true" />
       </span>
-      <span>
-        cloudbyte<span className="logo-light">labs</span>
-        <span className="logo-period">.</span>
+      <span className="logo-word">
+        <span>
+          Cloud<span className="logo-light">Light</span>
+        </span>
+        <small>Solutions</small>
       </span>
     </Link>
   );
@@ -287,9 +294,9 @@ export function Footer() {
       </div>
       <div className="container footer-bottom">
         <span>
-          © {new Date().getFullYear()} CloudByteLabs. All rights reserved.
+          © {new Date().getFullYear()} CloudLight Solutions. All rights reserved.
         </span>
-        <span>Made for your next chapter.</span>
+        <span className="footer-motto">People · Technology · Growth together</span>
       </div>
     </footer>
   );

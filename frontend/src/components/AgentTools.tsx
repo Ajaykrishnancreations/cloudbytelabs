@@ -26,7 +26,7 @@ export default function AgentTools() {
             name: "read_course_curriculum",
             title: "Read a course curriculum",
             description:
-              "Read the same course curriculum, prerequisites and project shown on CloudByteLabs. This does not enrol a learner or submit an enquiry.",
+              "Read the same course curriculum, prerequisites and project shown on CloudLight Solutions. This does not enrol a learner or submit an enquiry.",
             inputSchema: {
               type: "object",
               properties: {
