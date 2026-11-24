@@ -1,5 +1,5 @@
-import courses from "../../shared/courses.json";
-import { chatSchema } from "../../shared/validation";
+import courses from "../../shared/courses.json" with { type: "json" };
+import { chatSchema } from "../../shared/validation.js";
 import type { z } from "zod";
 type Input = z.infer<typeof chatSchema>;
 const copy: Record<
