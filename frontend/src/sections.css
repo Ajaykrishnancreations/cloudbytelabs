@@ -1,0 +1,314 @@
+/* Cinematic 3D layer. Part 2: homepage scenes, strips, worlds, tilt. */
+
+/* Manifesto (pinned) */
+.manifesto {
+  position: relative;
+  background: linear-gradient(180deg, #081a3d, #04102a);
+  color: #fff;
+}
+.manifesto-stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: 100svh;
+  overflow: hidden;
+  perspective: 900px;
+}
+.manifesto-stage .backdrop3d {
+  position: absolute;
+  inset: 0;
+}
+.manifesto-words {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  justify-items: center;
+  gap: 0.1em;
+  transform-style: preserve-3d;
+  text-align: center;
+  font-family: Manrope, sans-serif;
+  font-weight: 800;
+  font-size: clamp(44px, 9vw, 140px);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+.manifesto-word {
+  display: block;
+  will-change: transform, opacity, filter;
+}
+.manifesto-word.gold {
+  background: linear-gradient(100deg, #ffe08a, #ffb627 50%, #e09a12);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.manifesto-line {
+  position: absolute;
+  bottom: 18%;
+  left: 50%;
+  width: min(420px, 70vw);
+  height: 2px;
+  margin-left: calc(min(420px, 70vw) / -2);
+  background: linear-gradient(90deg, transparent, #ffc247, transparent);
+  box-shadow: 0 0 20px #ffb02088;
+  transform: scaleX(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .manifesto-stage {
+    height: auto;
+    padding: 100px 0;
+  }
+  .manifesto-line {
+    transform: none;
+  }
+}
+
+/* Backdrops sit behind content */
+.backdrop3d {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+.backdrop3d.bleed {
+  left: calc(50% - 50vw);
+  right: calc(50% - 50vw);
+}
+.services-band > .container,
+.projects-section > .container,
+.page-hero > .container,
+.footer > .container {
+  position: relative;
+  z-index: 1;
+}
+.difference,
+.paths,
+.projects-section,
+.footer {
+  position: relative;
+}
+.difference > :not(.backdrop3d),
+.paths > :not(.strip3d) {
+  position: relative;
+  z-index: 1;
+}
+.projects-section {
+  overflow: hidden;
+}
+
+/* 3D strips aligned to grid columns */
+.strip3d {
+  position: relative;
+  height: 190px;
+  margin: 8px 0 -12px;
+  pointer-events: none;
+}
+.paths-strip {
+  height: 230px;
+  margin-bottom: -40px;
+}
+@media (max-width: 1100px) {
+  .strip3d {
+    display: none;
+  }
+}
+
+/* Salesforce flagship world */
+.sf-world {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 560px;
+  overflow: hidden;
+  border-radius: 24px;
+  color: #fff;
+  background:
+    radial-gradient(ellipse at 75% 50%, #0b3d7a, transparent 65%),
+    linear-gradient(135deg, #040b1c, #06132e 60%, #082251);
+}
+.sf-world-scene {
+  position: absolute;
+  inset: 0;
+}
+.sf-world-copy {
+  position: relative;
+  z-index: 1;
+  padding: 56px;
+}
+.sf-world-copy p:not(.eyebrow) {
+  color: #b9c9e6;
+}
+.sf-world .sf-steps {
+  margin: 22px 0;
+}
+.sf-world-note {
+  display: block;
+  margin-bottom: 18px;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  color: #ffc247;
+}
+.world3d {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+@media (max-width: 860px) {
+  .sf-world {
+    grid-template-columns: 1fr;
+    padding-top: 300px;
+  }
+  .sf-world-scene {
+    bottom: auto;
+    height: 340px;
+  }
+  .sf-world-copy {
+    padding: 28px 22px;
+  }
+}
+
+/* Course page heroes with their own world */
+.page-hero.course-hero {
+  min-height: 560px;
+}
+.course-world {
+  z-index: 0;
+}
+@media (max-width: 767px) {
+  .page-hero.course-hero {
+    padding-top: 300px;
+  }
+  .course-world {
+    bottom: auto;
+    height: 320px;
+  }
+}
+
+/* Tilt */
+.tilt {
+  position: relative;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.tilt-glare {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(circle at var(--gx, 50%) var(--gy, 50%), #ffffff2e, transparent 55%);
+  transition: opacity 0.3s;
+}
+.tilt:hover .tilt-glare {
+  opacity: 1;
+}
+.course-reveal,
+.benefit-reveal {
+  display: flex;
+}
+.course-reveal > .tilt,
+.benefit-reveal > .tilt {
+  flex: 1;
+}
+.course-card .course-icon,
+.course-card h3,
+.benefit .benefit-icon {
+  transform: translateZ(28px);
+}
+.service-tilt {
+  padding: 22px 12px;
+  border-radius: 14px;
+}
+.services-grid li {
+  padding: 0;
+}
+.service-tilt .service-icon {
+  transform: translateZ(30px);
+}
+
+/* Audience tabs */
+.audience-tabs button {
+  position: relative;
+  isolation: isolate;
+}
+.audience-tabs button > span:not(.audience-pill) {
+  position: relative;
+  z-index: 1;
+}
+.audience-pill {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  background: var(--blue, #2e62ed);
+}
+.audience-tabs button[aria-selected="true"] {
+  background: transparent !important;
+  color: #fff;
+}
+.audience-panel {
+  transform-origin: top center;
+  padding: 4px 0 0 18px;
+  border-left: 3px solid var(--tone, #2e62ed);
+}
+.tone-blue {
+  --tone: #2e62ed;
+}
+.tone-gold {
+  --tone: #e09a12;
+}
+.tone-cyan {
+  --tone: #12aef5;
+}
+.learning-photo {
+  box-shadow: 0 30px 60px color-mix(in srgb, var(--tone, #2e62ed) 30%, transparent);
+  transition: box-shadow 0.6s;
+}
+.illustrative-note {
+  margin-top: 22px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* Roadmap in 3D perspective */
+.road-plane {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  transform: perspective(1100px) rotateX(26deg) scale(1.06);
+  transform-origin: 50% 65%;
+}
+.road-start-label,
+.road-scroll-hint {
+  z-index: 2;
+}
+@media (max-width: 767px) {
+  .road-plane {
+    transform: perspective(800px) rotateX(18deg) scale(1.04);
+  }
+}
+/* Flagship world wins over the older light card styles in both themes */
+:root[data-theme] .salesforce-feature.sf-world {
+  padding: 0;
+  border: 1px solid #2c57a866;
+  color: #fff;
+  background:
+    radial-gradient(ellipse at 75% 50%, #0b3d7a, transparent 65%),
+    linear-gradient(135deg, #040b1c, #06132e 60%, #082251);
+}
+:root[data-theme] .sf-world h2 {
+  color: #fff;
+}
+:root[data-theme] .sf-world p:not(.eyebrow),
+:root[data-theme] .sf-world .feature-points {
+  color: #b9c9e6;
+}
+:root[data-theme] .sf-world .eyebrow {
+  color: #5cc8ff;
+}
+:root[data-theme] .sf-world .sf-steps > div {
+  color: #e8eefb;
+  background: #ffffff0d;
+  border-color: #ffffff1f;
+}

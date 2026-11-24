@@ -4,6 +4,8 @@ import { Header, Footer } from "./components/Layout";
 import Home from "./pages/Home";
 import Analytics from "./components/Analytics";
 import AgentTools from "./components/AgentTools";
+import SmoothScroll from "./motion/SmoothScroll";
+import BrandLoader from "./components/BrandLoader";
 import { site } from "./data/site";
 const Pages = lazy(() => import("./pages/Pages"));
 const Contact = lazy(() => import("./pages/Contact"));
@@ -50,6 +52,8 @@ export default function App() {
   }, [location.pathname]);
   return (
     <>
+      <BrandLoader />
+      <SmoothScroll />
       <Header />
       <main id="main" tabIndex={-1}>
         <Suspense

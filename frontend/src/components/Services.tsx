@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import {
   GraduationCap,
@@ -8,6 +9,8 @@ import {
   Puzzle,
   Lightbulb,
 } from "lucide-react";
+import Tilt from "../motion/Tilt";
+import { Backdrop3D, Strip3D } from "../three/Scenes";
 export const services = [
   { icon: GraduationCap, title: "Training", tagline: "Build skills, build futures" },
   { icon: Cloud, title: "Cloud consulting", tagline: "Strategy to success" },
@@ -18,9 +21,11 @@ export const services = [
   { icon: Lightbulb, title: "And more", tagline: "Innovate together" },
 ];
 export default function Services() {
+  const [hovered, setHovered] = useState<number | null>(null);
   return (
-    <section className="services-band" aria-labelledby="services-title">
+    <section className="services-band" id="services" aria-labelledby="services-title">
       <div className="services-glow" aria-hidden="true" />
+      <Backdrop3D variant="difference" className="services-backdrop" />
       <div className="container">
         <motion.div
           className="services-head"
@@ -36,6 +41,7 @@ export default function Services() {
             More than training. <span>A partner for what you build next.</span>
           </h2>
         </motion.div>
+        <Strip3D kind="services" hovered={hovered} count={services.length} className="services-strip" />
         <motion.ul
           className="services-grid"
           initial="hidden"
@@ -43,7 +49,7 @@ export default function Services() {
           viewport={{ once: true, amount: 0.2 }}
           variants={{ show: { transition: { staggerChildren: 0.08 } } }}
         >
-          {services.map(({ icon: Icon, title, tagline }) => (
+          {services.map(({ icon: Icon, title, tagline }, i) => (
             <motion.li
               key={title}
               variants={{
@@ -51,13 +57,18 @@ export default function Services() {
                 show: { opacity: 1, y: 0, scale: 1 },
               }}
               transition={{ type: "spring", stiffness: 260, damping: 24 }}
-              whileHover={{ y: -6 }}
             >
-              <span className="service-icon">
-                <Icon size={26} strokeWidth={1.7} />
-              </span>
-              <h3>{title}</h3>
-              <p>{tagline}</p>
+              <Tilt
+                className="service-tilt"
+                max={12}
+                onHover={(on) => setHovered(on ? i : null)}
+              >
+                <span className="service-icon">
+                  <Icon size={26} strokeWidth={1.7} />
+                </span>
+                <h3>{title}</h3>
+                <p>{tagline}</p>
+              </Tilt>
             </motion.li>
           ))}
         </motion.ul>

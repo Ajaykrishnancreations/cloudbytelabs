@@ -1,15 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import {
-  MessageCircle,
-  Phone,
-  Send,
-  X,
-  RotateCcw,
-  Minus,
-  Bot,
-} from "lucide-react";
+import { Send, X, RotateCcw, Minus } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { site, track } from "../data/site";
+import FloatingActions, { Bot3D } from "./FloatingActions";
 type Message = { role: "user" | "assistant"; content: string };
 export default function Chat() {
   const { t, i18n } = useTranslation();
@@ -100,39 +93,13 @@ export default function Chat() {
   return (
     <>
       {!open && (
-        <div className="floating-actions">
-          <a
-            className="float-action"
-            href={`tel:${site.phone}`}
-            aria-label={t("call")}
-            title={t("call")}
-            onClick={() => track("call_click")}
-          >
-            <Phone size={18} />
-          </a>
-          <a
-            className="float-action whatsapp"
-            href={site.whatsapp}
-            aria-label={t("whatsapp")}
-            title={t("whatsapp")}
-            target="_blank"
-            rel="noreferrer"
-            onClick={() => track("whatsapp_click")}
-          >
-            <MessageCircle size={21} />
-          </a>
-          <button
-            ref={trigger}
-            className="float-action chat-trigger"
-            aria-label={t("chat")}
-            onClick={() => {
-              setOpen(true);
-              track("chat_open");
-            }}
-          >
-            <Bot size={25} />
-          </button>
-        </div>
+        <FloatingActions
+          ref={trigger}
+          onOpenChat={() => {
+            setOpen(true);
+            track("chat_open");
+          }}
+        />
       )}
       {open && (
         <div
@@ -195,8 +162,10 @@ export default function Chat() {
               </div>
             )}
             {loading && (
-              <p className="chat-bubble" role="status">
-                {t("thinking")}
+              <p className="chat-bubble chat-typing" role="status" aria-label={t("thinking")}>
+                <i />
+                <i />
+                <i />
               </p>
             )}
             {error && (

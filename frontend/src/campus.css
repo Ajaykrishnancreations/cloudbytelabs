@@ -1,0 +1,394 @@
+/* 3D campus on the Courses page */
+.campus {
+  position: relative;
+  padding-top: 64px;
+  background: linear-gradient(180deg, var(--surface), var(--page));
+}
+.campus-head {
+  text-align: center;
+  max-width: 720px;
+}
+.campus-head h2 {
+  font-family: Manrope, sans-serif;
+  font-size: clamp(28px, 3.6vw, 44px);
+  letter-spacing: -1px;
+  margin-top: 6px;
+}
+.campus-head p:not(.eyebrow) {
+  color: var(--muted);
+  margin-top: 10px;
+}
+.campus-stage {
+  position: relative;
+  height: min(78svh, 760px);
+  min-height: 480px;
+  margin-top: 28px;
+  overflow: hidden;
+  clip-path: inset(0);
+  touch-action: pan-y;
+}
+.campus-stage canvas {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+.campus.is-ready .campus-stage canvas {
+  opacity: 1;
+}
+.campus-loading {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  font-size: 14px;
+}
+.campus-labels {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.8s ease 0.3s;
+}
+.campus.is-ready .campus-labels {
+  opacity: 1;
+}
+.campus-pill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px 6px 6px;
+  border: 0;
+  border-radius: 999px;
+  white-space: nowrap;
+  font: 600 14px/1 Inter, system-ui, sans-serif;
+  color: #1f4fd8;
+  background: #ffffffee;
+  box-shadow: 0 8px 24px #10204a26;
+  cursor: pointer;
+  pointer-events: auto;
+  visibility: hidden;
+}
+.campus-pill b {
+  padding: 5px 9px;
+  border-radius: 999px;
+  font-size: 11px;
+  color: #fff;
+  background: #2e62ed;
+}
+.campus-pill.is-active b {
+  background: #ffb020;
+  color: #3a2600;
+}
+:root[data-theme="dark"] .campus-pill {
+  color: #cfe0ff;
+  background: #0f2448ee;
+  box-shadow:
+    0 8px 24px #00000066,
+    inset 0 0 0 1px #2c57a8;
+}
+.campus-controls {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: grid;
+  gap: 4px;
+  padding: 6px;
+  border-radius: 999px;
+  background: var(--surface-raised);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--line);
+}
+.campus-controls button {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 50%;
+  color: var(--link);
+  background: transparent;
+  cursor: pointer;
+}
+.campus-controls button:hover {
+  background: var(--surface-hover);
+}
+.campus-controls i {
+  height: 1px;
+  margin: 2px 8px;
+  background: var(--line);
+}
+.campus-switch {
+  position: absolute;
+  left: 50%;
+  bottom: 20px;
+  display: flex;
+  gap: 6px;
+  max-width: calc(100% - 24px);
+  padding: 6px;
+  overflow-x: auto;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: var(--surface-raised);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--line);
+  scrollbar-width: none;
+}
+.campus-switch button {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 14px;
+  border: 0;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  background: transparent;
+  cursor: pointer;
+}
+.campus-switch b {
+  font-size: 11px;
+  color: var(--accent);
+}
+.campus-switch button[aria-selected="true"] {
+  color: #fff;
+  background: var(--accent);
+}
+.campus-switch button[aria-selected="true"] b {
+  color: #fff;
+}
+.campus-panel {
+  position: absolute;
+  top: 20px;
+  right: 80px;
+  bottom: 84px;
+  display: flex;
+  flex-direction: column;
+  width: min(400px, calc(100% - 120px));
+  padding: 20px;
+  border-radius: 22px;
+  color: var(--ink);
+  background: color-mix(in srgb, var(--surface-raised) 88%, transparent);
+  backdrop-filter: blur(14px);
+  box-shadow:
+    0 24px 60px #10204a33,
+    inset 0 0 0 1px var(--line);
+}
+.campus-panel header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.campus-code {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  font-weight: 800;
+  color: #fff;
+  background: var(--accent);
+}
+.campus-panel header div {
+  display: grid;
+  flex: 1;
+}
+.campus-panel header small {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.campus-panel header strong {
+  font-family: Manrope, sans-serif;
+  font-size: 22px;
+}
+.campus-panel header button,
+.campus-panel footer button {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--link);
+  background: var(--surface);
+  cursor: pointer;
+}
+.campus-panel footer button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.campus-steps {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 4px;
+  margin: 18px 0 14px;
+  padding: 0;
+  list-style: none;
+}
+.campus-steps button {
+  display: grid;
+  justify-items: center;
+  gap: 5px;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  cursor: pointer;
+}
+.campus-steps span {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 700;
+  border: 1.5px solid var(--line);
+  background: var(--surface);
+}
+.campus-steps em {
+  font-style: normal;
+  font-size: 10px;
+  line-height: 1.2;
+  text-align: center;
+}
+.campus-steps .is-done span {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.campus-steps .is-current span {
+  border-color: var(--accent);
+  color: #fff;
+  background: var(--accent);
+}
+.campus-steps .is-current em {
+  color: var(--ink);
+  font-weight: 600;
+}
+.campus-body {
+  flex: 1;
+  overflow-y: auto;
+}
+.campus-step-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.campus-body h4 {
+  margin-top: 8px;
+  font-family: Manrope, sans-serif;
+  font-size: 20px;
+  line-height: 1.25;
+}
+.campus-body p {
+  margin-top: 8px;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--muted);
+}
+.campus-chips,
+.campus-path {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 14px;
+}
+.campus-chips span,
+.campus-path span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+.campus-path b {
+  font-size: 10px;
+  color: var(--accent);
+}
+.campus-list {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+  padding-left: 20px;
+  font-size: 14px;
+}
+.campus-more,
+.campus-note {
+  font-weight: 600;
+}
+.campus-actions {
+  display: grid;
+  gap: 8px;
+  margin-top: 16px;
+}
+.campus-actions .button {
+  justify-content: center;
+}
+.campus-panel footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 14px;
+}
+.campus-meter {
+  flex: 1;
+  height: 4px;
+  overflow: hidden;
+  border-radius: 4px;
+  background: var(--line);
+}
+.campus-meter span {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+  transition: width 0.4s;
+}
+@media (max-width: 767px) {
+  .campus {
+    padding-top: 44px;
+  }
+  .campus-stage {
+    height: 72svh;
+    min-height: 460px;
+  }
+  .campus-controls {
+    top: 12px;
+    right: 12px;
+  }
+  .campus-switch {
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+    transform: none;
+    max-width: none;
+  }
+  .campus-panel {
+    position: relative;
+    inset: auto;
+    width: auto;
+    margin: 12px 12px 0;
+    background: var(--surface-raised);
+  }
+  .campus-body {
+    overflow: visible;
+  }
+  .campus-steps em {
+    display: none;
+  }
+  .campus-pill {
+    font-size: 12px;
+    padding: 4px 10px 4px 4px;
+  }
+}

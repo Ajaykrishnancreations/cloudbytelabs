@@ -17,6 +17,8 @@ import {
   GraduationCap,
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import Tilt from "../motion/Tilt";
+import { Final3D } from "../three/Scenes";
 import { courses, track } from "../data/site";
 export const courseIcons = [Cloud, Code2, PenTool, Terminal];
 export function Reveal({
@@ -59,6 +61,14 @@ export function Button({
     </Link>
   );
 }
+const rise = {
+  hidden: { opacity: 0, y: 26 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: [0.2, 0.8, 0.2, 1] as const },
+  },
+};
 export function SectionHeading({
   eyebrow,
   title,
@@ -71,58 +81,93 @@ export function SectionHeading({
   action?: ReactNode;
 }) {
   return (
-    <div className="section-heading">
+    <motion.div
+      className="section-heading"
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.4 }}
+      variants={{ show: { transition: { staggerChildren: 0.1 } } }}
+    >
       <div>
-        {eyebrow && <p className="eyebrow">{eyebrow}</p>}
-        <h2>{title}</h2>
-        {description && <p className="section-description">{description}</p>}
+        {eyebrow && (
+          <motion.p className="eyebrow" variants={rise}>
+            {eyebrow}
+          </motion.p>
+        )}
+        <motion.h2 variants={rise}>{title}</motion.h2>
+        {description && (
+          <motion.p className="section-description" variants={rise}>
+            {description}
+          </motion.p>
+        )}
       </div>
-      {action}
-    </div>
+      {action && <motion.div variants={rise}>{action}</motion.div>}
+    </motion.div>
   );
 }
-export function CourseCards() {
+export function CourseCards({
+  onHover,
+}: {
+  onHover?: (i: number | null) => void;
+} = {}) {
   const { t } = useTranslation();
   return (
     <div className="course-grid">
       {courses.map((c, i) => {
         const Icon = courseIcons[i];
         return (
-          <Reveal key={c.slug} className={`course-card course-${i}`}>
-            <div className="course-card-top">
-              <span className="course-icon">
-                <Icon size={28} />
-              </span>
-              {i === 0 && <span className="tag">{t("flagship")}</span>}
-              <span className="course-number">0{i + 1}</span>
-            </div>
-            <p className="course-category">{c.category}</p>
-            <h3>{c.title}</h3>
-            <p>{t(`courseDesc.${c.slug}`, { defaultValue: c.description })}</p>
-            <div className="tech-chips">
-              {c.technologies.slice(0, 4).map((x) => (
-                <span key={x}>{x}</span>
-              ))}
-            </div>
-            <Link
-              onClick={() => track("course_cta_click", { course: c.slug })}
-              className="card-link"
-              to={`/courses/${c.slug}`}
+          <Reveal key={c.slug} className="course-reveal">
+            <Tilt
+              className={`course-card course-${i}`}
+              max={7}
+              onHover={(on) => onHover?.(on ? i : null)}
             >
-              {t("readMore")}
-              <ArrowUpRight size={18} />
-            </Link>
+              <div className="course-card-top">
+                <span className="course-icon">
+                  <Icon size={28} />
+                </span>
+                {i === 0 && <span className="tag">{t("flagship")}</span>}
+                <span className="course-number">0{i + 1}</span>
+              </div>
+              <p className="course-category">{c.category}</p>
+              <h3>{c.title}</h3>
+              <p>
+                {t(`courseDesc.${c.slug}`, { defaultValue: c.description })}
+              </p>
+              <div className="tech-chips">
+                {c.technologies.slice(0, 4).map((x) => (
+                  <span key={x}>{x}</span>
+                ))}
+              </div>
+              <Link
+                onClick={() => track("course_cta_click", { course: c.slug })}
+                className="card-link"
+                to={`/courses/${c.slug}`}
+              >
+                {t("readMore")}
+                <ArrowUpRight size={18} />
+              </Link>
+            </Tilt>
           </Reveal>
         );
       })}
     </div>
   );
 }
-export function CTA() {
+export function CTA({ scene = false }: { scene?: boolean }) {
   const { t } = useTranslation();
   return (
     <section className="container">
-      <div className="cta-panel">
+      <div className={`cta-panel cta-portal ${scene ? "has-scene" : ""}`}>
+        {scene ? (
+          <Final3D />
+        ) : (
+          <div className="portal-rings" aria-hidden="true">
+            <i />
+            <i />
+            <i />
+          </div>
+        )}
         <div>
           <p className="eyebrow">LET’S MAKE IT HAPPEN</p>
           <h2>{t("ctaTitle")}</h2>
@@ -170,18 +215,20 @@ export function Benefits() {
   return (
     <div className="benefit-grid">
       {items.map(([title, copy, Icon], i) => (
-        <Reveal key={title} className="benefit">
-          <span className="benefit-icon">
-            <Icon size={23} />
-          </span>
-          <h3>{t(`benefit.${i}.title`, { defaultValue: title })}</h3>
-          <p>{t(`benefit.${i}.body`, { defaultValue: copy })}</p>
+        <Reveal key={title} className="benefit-reveal">
+          <Tilt className="benefit" max={8}>
+            <span className="benefit-icon">
+              <Icon size={23} />
+            </span>
+            <h3>{t(`benefit.${i}.title`, { defaultValue: title })}</h3>
+            <p>{t(`benefit.${i}.body`, { defaultValue: copy })}</p>
+          </Tilt>
         </Reveal>
       ))}
     </div>
   );
 }
-export { default as Roadmap } from "./ScrollRoadmap";
+export { default as Roadmap } from "./FlowRoadmap";
 export function ProjectPreview({ index = 0 }: { index?: number }) {
   return (
     <div className={`project-preview preview-${index}`} aria-hidden="true">
@@ -237,7 +284,9 @@ export function ProjectCards({ limit = 4 }: { limit?: number }) {
     <div className="project-grid">
       {courses.slice(0, limit).map((c, i) => (
         <Reveal className="project-card" key={c.slug}>
-          <ProjectPreview index={i} />
+          <Tilt className="project-tilt" max={6}>
+            <ProjectPreview index={i} />
+          </Tilt>
           <div className="project-copy">
             <p className="eyebrow">{c.title}</p>
             <h3>{c.project.title}</h3>

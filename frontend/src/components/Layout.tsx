@@ -10,6 +10,7 @@ import {
   MessageCircle,
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
 import { languages } from "../../../shared/config";
 import { courses, site, track } from "../data/site";
 import { courseIcons } from "./UI";
@@ -110,7 +111,14 @@ export function Header() {
                   }}
                 >
                   <div>
-                    <NavLink to={path}>{t(label)}</NavLink>
+                    <NavLink to={path}>
+                      {({ isActive }) => (
+                        <>
+                          {t(label)}
+                          {isActive && <motion.span layoutId="nav-indicator" className="nav-indicator" />}
+                        </>
+                      )}
+                    </NavLink>
                     <button
                       aria-label="Open course menu"
                       aria-expanded={mega}
@@ -146,7 +154,12 @@ export function Header() {
                 </div>
               ) : (
                 <NavLink key={path} end={path === "/"} to={path}>
-                  {t(label)}
+                  {({ isActive }) => (
+                    <>
+                      {t(label)}
+                      {isActive && <motion.span layoutId="nav-indicator" className="nav-indicator" />}
+                    </>
+                  )}
                 </NavLink>
               ),
             )}

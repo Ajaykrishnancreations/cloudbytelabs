@@ -1,0 +1,239 @@
+/* Clean glass finish + layout fixes. Loaded last so it refines everything. */
+:root[data-theme="light"] {
+  --glass-bg: rgba(255, 255, 255, 0.62);
+  --glass-strong: rgba(255, 255, 255, 0.82);
+  --glass-border: rgba(255, 255, 255, 0.75);
+  --glass-edge: rgba(20, 40, 80, 0.08);
+  --glass-shadow: 0 1px 0 rgba(255, 255, 255, 0.9) inset, 0 12px 40px rgba(16, 32, 74, 0.08);
+  --page-wash:
+    radial-gradient(1200px 600px at 10% -10%, #e6efff 0, transparent 60%),
+    radial-gradient(900px 500px at 100% 20%, #fff3dc 0, transparent 55%), #f7f9fc;
+}
+:root[data-theme="dark"] {
+  --glass-bg: rgba(16, 34, 70, 0.55);
+  --glass-strong: rgba(16, 34, 70, 0.78);
+  --glass-border: rgba(140, 180, 255, 0.16);
+  --glass-edge: rgba(140, 180, 255, 0.1);
+  --glass-shadow: 0 1px 0 rgba(255, 255, 255, 0.06) inset, 0 16px 44px rgba(0, 0, 0, 0.35);
+  --page-wash:
+    radial-gradient(1200px 600px at 10% -10%, #10285a 0, transparent 60%),
+    radial-gradient(900px 500px at 100% 20%, #1a2a52 0, transparent 55%), #06132e;
+}
+:root[data-theme] body {
+  background: var(--page-wash);
+  background-attachment: fixed;
+}
+
+/* One glass surface recipe */
+:root[data-theme] .course-card,
+:root[data-theme] .benefit,
+:root[data-theme] .project-card,
+:root[data-theme] .faq-item,
+:root[data-theme] .faq-list details,
+:root[data-theme] .contact-form,
+:root[data-theme] .contact-info,
+:root[data-theme] .flow-panel,
+:root[data-theme] .campus-panel,
+:root[data-theme] .bookshelf,
+:root[data-theme] .flow,
+:root[data-theme] .prose,
+:root[data-theme] .learning-section .audience-panel {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow), 0 0 0 1px var(--glass-edge);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+}
+:root[data-theme] .flow {
+  background-image: radial-gradient(var(--flow-dot) 1px, transparent 1.2px);
+  background-size: 28px 28px;
+}
+:root[data-theme] .course-card,
+:root[data-theme] .benefit,
+:root[data-theme] .project-card {
+  border-radius: 20px;
+  transition:
+    box-shadow 0.35s,
+    background 0.35s;
+}
+:root[data-theme] .course-card:hover,
+:root[data-theme] .benefit:hover,
+:root[data-theme] .project-card:hover {
+  background: var(--glass-strong);
+  box-shadow: var(--glass-shadow), 0 24px 60px rgba(16, 32, 74, 0.14);
+}
+
+/* Header: floating glass bar */
+:root[data-theme] .header {
+  background: transparent;
+  border-color: transparent;
+}
+:root[data-theme] .header .header-inner {
+  margin-top: 10px;
+  padding-inline: 18px;
+  border-radius: 18px;
+  background: var(--glass-strong);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow), 0 0 0 1px var(--glass-edge);
+  backdrop-filter: blur(18px) saturate(150%);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+}
+:root[data-theme] .header.scrolled {
+  background: transparent;
+  box-shadow: none;
+}
+
+/* Audience tabs: a clean glass segmented control (fixes hidden active label) */
+:root[data-theme] .audience-tabs {
+  display: inline-flex;
+  gap: 4px;
+  padding: 5px;
+  border: 1px solid var(--glass-border);
+  border-radius: 999px;
+  background: var(--glass-bg);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(14px);
+}
+:root[data-theme] .audience-tabs button {
+  padding: 9px 16px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  box-shadow: none;
+}
+:root[data-theme] .audience-tabs button:after {
+  display: none;
+}
+:root[data-theme] .audience-tabs button[aria-selected="true"] {
+  color: #fff;
+  background: transparent;
+}
+:root[data-theme] .audience-pill {
+  border-radius: 999px;
+  background: linear-gradient(135deg, #3e86ff, #1f4fd8);
+  box-shadow: 0 6px 16px rgba(31, 79, 216, 0.35);
+}
+:root[data-theme] .learning-section .audience-panel {
+  margin-top: 18px;
+  padding: 22px;
+  border-left-width: 1px;
+  border-radius: 18px;
+}
+
+/* Bookshelf: board sits under the books, never over the caption */
+.shelf-wrap {
+  position: relative;
+  padding-bottom: 26px;
+}
+.shelf-board {
+  left: 0 !important;
+  right: 0;
+  bottom: 12px !important;
+  width: auto !important;
+}
+.bookshelf.is-closed .shelf {
+  justify-content: center;
+}
+.shelf-prompt h3 {
+  font-size: clamp(30px, 3.4vw, 44px);
+}
+
+/* Reader: visible secondary button on the paper page */
+.reader-actions .button.secondary {
+  color: #1b2333;
+  border: 1px solid #d9cfbb;
+  background: #fff;
+}
+.reader-actions .button.secondary:hover {
+  background: #f3ede1;
+}
+
+/* Mobile hero: object above the copy, room for floating buttons */
+@media (max-width: 767px) {
+  .hero-cinematic .hero-grid {
+    padding-block: 44svh 96px;
+  }
+  .hero-cinematic .hero-eyebrow {
+    margin-top: 0;
+  }
+  .bookshelf {
+    padding: 22px 14px;
+  }
+  .shelf {
+    justify-content: center;
+  }
+  :root[data-theme] .header .header-inner {
+    margin: 8px 8px 0;
+    padding-inline: 12px;
+  }
+}
+@media (max-width: 860px) {
+  :root[data-theme] .salesforce-feature.sf-world {
+    padding-top: 300px;
+  }
+}
+@media (max-width: 1000px) {
+  .bookshelf {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .shelf-wrap,
+  .shelf-caption {
+    min-width: 0;
+  }
+}
+
+/* "The CloudLight difference" cards */
+.difference .section-heading {
+  margin-bottom: 40px;
+}
+.difference .benefit-grid {
+  gap: 24px;
+  padding-top: 0;
+}
+:root[data-theme] .benefit {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 28px 28px 30px;
+}
+.benefit .benefit-icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 8px;
+  border-radius: 14px;
+  color: #2456d6;
+  background: linear-gradient(135deg, #e6efff, #f4f8ff);
+  box-shadow: inset 0 0 0 1px #ffffff, 0 4px 12px #2456d614;
+}
+:root[data-theme="dark"] .benefit .benefit-icon {
+  color: #8fc6ff;
+  background: #2456d61f;
+  box-shadow: inset 0 0 0 1px #3e86ff33;
+}
+.benefit h3 {
+  margin: 0;
+  font-size: 19px;
+  letter-spacing: -0.3px;
+}
+.benefit p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--muted);
+}
+@media (max-width: 960px) {
+  .difference .benefit-grid {
+    gap: 18px;
+  }
+}
+@media (max-width: 640px) {
+  .difference .benefit-grid {
+    grid-template-columns: 1fr;
+  }
+  :root[data-theme] .benefit {
+    padding: 22px;
+  }
+}

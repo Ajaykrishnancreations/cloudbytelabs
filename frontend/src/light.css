@@ -1,0 +1,285 @@
+/* Light-theme versions of the cinematic sections + manifesto and greeter fixes. */
+:root[data-theme="light"] {
+  --l-bg: linear-gradient(160deg, #f5f9ff 0%, #e8f0ff 55%, #fdf5e6 100%);
+  --l-ink: #0f1c36;
+  --l-muted: #4a5d7c;
+  --l-eyebrow: #2456d6;
+  --l-gold: #c98612;
+  --l-card: rgba(255, 255, 255, 0.7);
+  --l-line: rgba(20, 40, 80, 0.1);
+}
+
+/* Hero */
+:root[data-theme="light"] .hero.hero-cinematic {
+  color: var(--l-ink);
+  background:
+    radial-gradient(ellipse 55% 65% at 72% 45%, #d9e7ff 0, transparent 70%),
+    radial-gradient(ellipse 40% 40% at 95% 95%, #ffefd0 0, transparent 70%),
+    var(--l-bg);
+}
+:root[data-theme="light"] .hero.hero-cinematic:before {
+  background-image:
+    linear-gradient(#2456d60d 1px, transparent 1px),
+    linear-gradient(90deg, #2456d60d 1px, transparent 1px);
+}
+:root[data-theme="light"] .hero-veil {
+  background: linear-gradient(90deg, #f5f9ffe6 0%, #f5f9ff99 38%, transparent 62%);
+}
+:root[data-theme="light"] .hero-cinematic h1 {
+  color: var(--l-ink);
+}
+:root[data-theme="light"] .hero-cinematic .split-line.accent .split-word {
+  background-image: linear-gradient(100deg, #1f6fe0, #2456d6 40%, #d4900f 55%, #2456d6 70%, #1f6fe0);
+}
+:root[data-theme="light"] .hero-cinematic .hero-eyebrow,
+:root[data-theme="light"] .hero-cinematic .hero-description,
+:root[data-theme="light"] .hero-cinematic .hero-points,
+:root[data-theme="light"] .hero-cinematic .hero-bottom > span,
+:root[data-theme="light"] .hero-cinematic .hero-bottom > span strong {
+  color: var(--l-muted);
+}
+:root[data-theme="light"] .hero-cinematic .sf-technology-strip > div {
+  color: var(--l-ink);
+}
+:root[data-theme="light"] .hero-cinematic .hero-bottom {
+  border-color: var(--l-line);
+}
+:root[data-theme="light"] .hero-cinematic .hero-buttons .secondary {
+  color: var(--l-ink);
+  border-color: var(--l-line);
+  background: var(--l-card);
+}
+:root[data-theme="light"] .scroll-cue {
+  color: var(--l-muted);
+}
+@media (max-width: 960px) {
+  :root[data-theme="light"] .hero-veil {
+    background: linear-gradient(180deg, transparent 0%, #f5f9ff66 38%, #f5f9ffee 62%);
+  }
+}
+
+/* Manifesto: calmer type size, orbit rings for depth */
+.manifesto-words {
+  font-size: clamp(34px, 6vw, 84px);
+  letter-spacing: -0.03em;
+  gap: 0.18em;
+}
+.manifesto-orbits {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: min(760px, 92vw);
+  height: min(760px, 92vw);
+  margin: calc(min(760px, 92vw) / -2) 0 0 calc(min(760px, 92vw) / -2);
+  transform-style: preserve-3d;
+  transform: rotateX(68deg) rotateZ(-20deg);
+  pointer-events: none;
+}
+.manifesto-orbits i {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1.5px solid #5cc8ff55;
+  box-shadow: 0 0 30px #3e86ff22;
+}
+.manifesto-orbits i:nth-child(2) {
+  inset: 14%;
+  border-color: #ffc24766;
+}
+.manifesto-orbits i:nth-child(3) {
+  inset: 28%;
+  border-style: dashed;
+  border-color: #8fc6ff66;
+  animation: portal-spin 30s linear infinite;
+}
+.manifesto-orbits b {
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  margin-left: -6px;
+  border-radius: 50%;
+  background: #ffc247;
+  box-shadow: 0 0 18px #ffc247;
+}
+:root[data-theme="light"] .manifesto {
+  color: var(--l-ink);
+  background:
+    radial-gradient(ellipse at 50% 50%, #ffffff 0, transparent 60%),
+    linear-gradient(180deg, #eef4ff, #f8f4ea);
+}
+:root[data-theme="light"] .manifesto-word:not(.gold) {
+  color: var(--l-ink);
+}
+:root[data-theme="light"] .manifesto-word.gold {
+  background-image: linear-gradient(100deg, #e0a019, #c98612 50%, #a86b00);
+}
+:root[data-theme="light"] .manifesto-orbits i {
+  border-color: #2456d633;
+  box-shadow: none;
+}
+:root[data-theme="light"] .manifesto-orbits i:nth-child(2) {
+  border-color: #c9861255;
+}
+
+/* Services band */
+:root[data-theme="light"] .services-band {
+  color: var(--l-ink);
+  background:
+    radial-gradient(ellipse at 50% 0%, #dbe8ff 0, transparent 60%),
+    linear-gradient(180deg, #f3f7ff, #eef3fb);
+}
+:root[data-theme="light"] .services-motto {
+  color: var(--l-muted);
+}
+:root[data-theme="light"] .services-motto i {
+  background: var(--l-line);
+}
+:root[data-theme="light"] .services-head h2 {
+  color: var(--l-ink);
+}
+:root[data-theme="light"] .services-head h2 span {
+  background-image: linear-gradient(100deg, #1f6fe0, #2456d6);
+}
+:root[data-theme="light"] .services-grid h3 {
+  color: var(--l-ink);
+}
+:root[data-theme="light"] .services-grid p {
+  color: var(--l-muted);
+}
+:root[data-theme="light"] .services-grid li + li:before {
+  background: linear-gradient(180deg, transparent, var(--l-line), transparent);
+}
+:root[data-theme="light"] .services-grid li:hover {
+  background: var(--l-card);
+  box-shadow: 0 14px 36px #10204a14, inset 0 0 0 1px #ffffff;
+}
+:root[data-theme="light"] .service-icon {
+  color: #2456d6;
+  background: #2456d614;
+}
+
+/* Flagship world */
+:root[data-theme="light"] .salesforce-feature.sf-world {
+  color: var(--l-ink);
+  border: 1px solid #ffffff;
+  background:
+    radial-gradient(ellipse at 78% 50%, #d4e4ff 0, transparent 60%),
+    var(--l-bg);
+  box-shadow: 0 24px 60px #10204a14, 0 0 0 1px var(--l-line);
+}
+:root[data-theme="light"] .sf-world h2 {
+  color: var(--l-ink);
+}
+:root[data-theme="light"] .sf-world p:not(.eyebrow),
+:root[data-theme="light"] .sf-world .feature-points {
+  color: var(--l-muted);
+}
+:root[data-theme="light"] .sf-world .eyebrow {
+  color: var(--l-eyebrow);
+}
+:root[data-theme="light"] .sf-world-note {
+  color: var(--l-gold);
+}
+:root[data-theme="light"] .sf-world .sf-steps > div {
+  color: var(--l-ink);
+  background: var(--l-card);
+  border-color: #ffffff;
+  box-shadow: 0 4px 14px #10204a0d;
+}
+
+/* CTA portal */
+:root[data-theme="light"] .cta-panel.cta-portal {
+  color: var(--l-ink);
+  border: 1px solid #ffffff;
+  background:
+    radial-gradient(ellipse at 82% 50%, #d4e4ff 0, transparent 60%),
+    var(--l-bg);
+  box-shadow: 0 24px 60px #10204a14, 0 0 0 1px var(--l-line);
+}
+:root[data-theme="light"] .cta-portal h2 {
+  color: var(--l-ink);
+}
+:root[data-theme="light"] .cta-portal p:not(.eyebrow) {
+  color: var(--l-muted);
+}
+:root[data-theme="light"] .cta-portal .eyebrow {
+  color: var(--l-gold);
+}
+/* Keep the CTA button clear of the 3D logo on wide screens */
+.cta-portal.has-scene {
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
+}
+.cta-portal.has-scene > div:not(.final3d) {
+  max-width: 52%;
+}
+.cta-portal.has-scene .button {
+  position: relative;
+  z-index: 1;
+}
+@media (max-width: 767px) {
+  .cta-portal.has-scene > div:not(.final3d) {
+    max-width: none;
+  }
+}
+
+/* Inner page headers */
+:root[data-theme="light"] .page-hero {
+  color: var(--l-ink);
+  background:
+    radial-gradient(ellipse 50% 80% at 85% 30%, #d4e4ff 0, transparent 70%),
+    var(--l-bg);
+  border-bottom: 1px solid var(--l-line);
+}
+:root[data-theme="light"] .page-hero h1 {
+  color: var(--l-ink);
+}
+:root[data-theme="light"] .page-hero p:not(.eyebrow),
+:root[data-theme="light"] .page-hero .breadcrumbs,
+:root[data-theme="light"] .page-hero .breadcrumbs a {
+  color: var(--l-muted);
+}
+:root[data-theme="light"] .page-hero .eyebrow {
+  color: var(--l-eyebrow);
+}
+:root[data-theme="light"] .page-hero .tech-chips > span {
+  color: var(--l-ink);
+  background: var(--l-card);
+  border-color: #ffffff;
+}
+:root[data-theme="light"] .page-hero .secondary {
+  color: var(--l-ink);
+  border-color: var(--l-line);
+  background: var(--l-card);
+}
+:root[data-theme="light"] .mentor-3d {
+  background: radial-gradient(circle at 50% 60%, #dbe8ff, #eef4ff 75%);
+}
+
+/* Bot greeter: anchor to the bottom of the button so nothing is clipped */
+.fab-bot .fab-card.fab-greeter {
+  top: auto;
+  bottom: 0;
+  align-items: center;
+  padding: 18px 20px 18px 14px;
+  transform: translate(10px, 0) scale(0.92);
+  transform-origin: bottom right;
+}
+.fab-bot:hover .fab-card.fab-greeter,
+.fab-bot:focus-within .fab-card.fab-greeter,
+.fab-bot.is-greeting .fab-card.fab-greeter {
+  transform: translate(0, 0) scale(1);
+}
+.fab-greeter-bot {
+  align-self: center;
+  margin: 0;
+}
+.fab-greeter {
+  max-width: 340px;
+}
+.fab-greeter-actions > * {
+  white-space: nowrap;
+}

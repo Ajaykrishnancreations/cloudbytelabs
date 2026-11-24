@@ -655,7 +655,6 @@ img {
 }
 .course-card:hover {
   box-shadow: 0 14px 40px #1c3d7910;
-  transform: translateY(-5px) !important;
 }
 .course-0 {
   border-color: #b9cef9;

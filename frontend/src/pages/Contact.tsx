@@ -11,6 +11,8 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { Backdrop3D } from "../three/Scenes";
+import { Bot3D } from "../components/FloatingActions";
 import { leadSchema, type Lead } from "../../../shared/validation";
 import { courses, site, track } from "../data/site";
 import { z } from "zod";
@@ -67,6 +69,7 @@ export default function Contact() {
   return (
     <div className="page-enter">
       <section className="page-hero">
+        <Backdrop3D variant="mentor" />
         <div className="container">
           <p className="eyebrow">{t("contact")}</p>
           <h1>{t("contactTitle")}</h1>
@@ -212,6 +215,9 @@ export default function Contact() {
           </form>
         )}
         <aside className="contact-info">
+          <div className="mentor-3d" aria-hidden="true">
+            <Bot3D wave size={3} />
+          </div>
           <h2>{t("mentor")}</h2>
           <div className="contact-method">
             <Phone />

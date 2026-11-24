@@ -1,0 +1,185 @@
+/* Cinematic 3D layer. Part 3: CTA portal, page headers, header, footer. */
+
+/* CTA portal */
+:root[data-theme] .cta-panel.cta-portal {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  color: #fff;
+  border: 1px solid #2c57a866;
+  border-radius: 22px;
+  padding-block: 64px;
+  background:
+    radial-gradient(ellipse at 82% 50%, #1b4fb877, transparent 60%),
+    linear-gradient(135deg, #040b1c, #06132e 60%, #0b1f4a);
+}
+.cta-portal.has-scene {
+  min-height: 420px;
+}
+:root[data-theme] .cta-portal p:not(.eyebrow) {
+  color: #b9c9e6;
+}
+:root[data-theme] .cta-portal .eyebrow {
+  color: #ffc247;
+}
+.cta-portal h2 {
+  font-size: clamp(28px, 3.4vw, 46px);
+  letter-spacing: -1px;
+}
+.cta-portal > div:not(.final3d):not(.portal-rings) {
+  position: relative;
+  z-index: 1;
+}
+.final3d {
+  position: absolute;
+  inset: 0 0 0 45%;
+  z-index: 0;
+}
+.portal-rings {
+  position: absolute;
+  z-index: -1;
+  right: -60px;
+  top: 50%;
+  width: 420px;
+  height: 420px;
+  transform: translateY(-50%);
+}
+.portal-rings i {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  background: conic-gradient(from 0deg, transparent, #3fd0ff, #3e86ff, transparent 60%, #ffc247, transparent) border-box;
+  mask:
+    linear-gradient(#000 0 0) padding-box exclude,
+    linear-gradient(#000 0 0);
+  animation: portal-spin 9s linear infinite;
+  opacity: 0.85;
+}
+.portal-rings i:nth-child(2) {
+  inset: 50px;
+  animation-duration: 6s;
+  animation-direction: reverse;
+}
+.portal-rings i:nth-child(3) {
+  inset: 105px;
+  animation-duration: 4s;
+  box-shadow: 0 0 80px 20px #2f7bff44;
+}
+@keyframes portal-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (max-width: 767px) {
+  .final3d {
+    inset: 0;
+    opacity: 0.55;
+  }
+  .portal-rings {
+    width: 300px;
+    height: 300px;
+    right: -120px;
+  }
+  :root[data-theme] .cta-panel.cta-portal {
+    padding: 44px 24px;
+  }
+}
+
+/* Inner page headers: dark and cinematic in both themes */
+:root[data-theme] .page-hero {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  color: #fff;
+  border-bottom: 0;
+  background:
+    radial-gradient(ellipse 50% 80% at 85% 30%, #1a3f8a77, transparent 70%),
+    linear-gradient(160deg, #040b1c, #06132e 60%, #081a3d);
+}
+:root[data-theme] .page-hero p:not(.eyebrow),
+:root[data-theme] .page-hero .breadcrumbs,
+:root[data-theme] .page-hero .breadcrumbs a {
+  color: #b9c9e6;
+}
+:root[data-theme] .page-hero .eyebrow {
+  color: #5cc8ff;
+}
+:root[data-theme] .page-hero .tech-chips > span {
+  color: #c7d6f0;
+  background: #ffffff0d;
+  border-color: #ffffff22;
+}
+:root[data-theme] .page-hero .secondary {
+  color: #fff;
+  border-color: #ffffff38;
+  background: #ffffff0a;
+}
+.page-hero h1 {
+  animation: rise-in 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.page-hero .eyebrow,
+.page-hero p:not(.eyebrow) {
+  animation: rise-in 0.9s 0.12s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
+
+/* Header: glass bar and sliding active indicator */
+:root[data-theme] .header.scrolled {
+  background: color-mix(in srgb, var(--page) 72%, transparent);
+  backdrop-filter: saturate(160%) blur(14px);
+}
+.desktop-nav a {
+  position: relative;
+}
+.nav-indicator {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -8px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #3e86ff, #ffc247);
+}
+.header-cta {
+  transition:
+    transform 0.25s,
+    box-shadow 0.25s;
+}
+.header-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px #2e62ed55;
+}
+
+/* Footer */
+.footer {
+  overflow: hidden;
+}
+.footer > .backdrop3d {
+  opacity: 0.7;
+}
+
+/* Mentor card header on the contact page */
+.mentor-3d {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: 150px;
+  margin: -6px -6px 14px;
+  overflow: hidden;
+  border-radius: 14px;
+  background: radial-gradient(circle at 50% 60%, #1a3f8a, #06132e 75%);
+}
+.mentor-3d:before {
+  content: "";
+  position: absolute;
+  inset: 20%;
+  border-radius: 50%;
+  border: 1px solid #3fd0ff55;
+  animation: portal-spin 12s linear infinite;
+}

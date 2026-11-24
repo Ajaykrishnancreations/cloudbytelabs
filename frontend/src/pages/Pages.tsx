@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation, useSearchParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import CoursesCampus from "../three/campus/CoursesCampus";
+import BookShelf from "../components/BookShelf";
+import { Backdrop3D, World3D } from "../three/Scenes";
+import type { Variant } from "../three/ShapesScene";
+import { roadmapSteps } from "../data/roadmaps";
 import {
   Plus,
   Search,
@@ -22,18 +27,21 @@ import {
   ProjectCards,
   ProjectPreview,
 } from "../components/UI";
-import { CodeWindow } from "./Home";
+import { CodeWindow } from "../components/CodeWindow";
 function PageHero({
   eyebrow,
   title,
   description,
+  variant = "about",
 }: {
   eyebrow: string;
   title: string;
   description?: string;
+  variant?: Variant;
 }) {
   return (
     <section className="page-hero">
+      <Backdrop3D variant={variant} />
       <div className="container">
         <p className="eyebrow">{eyebrow}</p>
         <h1>{title}</h1>
@@ -99,7 +107,8 @@ function Course({ slug }: { slug: string }) {
   if (!c) return <NotFound />;
   return (
     <>
-      <section className="page-hero">
+      <section className="page-hero course-hero">
+        <World3D slug={c.slug} className="course-world" />
         <div className="container">
           <div className="breadcrumbs">
             <Link to="/">{t("home")}</Link>
@@ -212,7 +221,7 @@ function Course({ slug }: { slug: string }) {
       </section>
       <section className="section container">
         <SectionHeading eyebrow={c.title} title={t("roadmap")} />
-        <Roadmap items={c.roadmap} />
+        <Roadmap steps={roadmapSteps(c.slug, c.roadmap)} eyebrow={`YOUR ${c.title.toUpperCase()} JOURNEY`} />
       </section>
       <section className="container">
         <SectionHeading title={t("faq")} />
@@ -229,6 +238,7 @@ function Projects() {
   return (
     <>
       <PageHero
+        variant="projects"
         eyebrow={t("projects")}
         title={t("projectTitle")}
         description={t("projectDescription")}
@@ -273,6 +283,7 @@ function About() {
   return (
     <>
       <PageHero
+        variant="about"
         eyebrow={t("about")}
         title={t("aboutHeadline", {
           defaultValue: "Learn from people who build real software.",
@@ -320,6 +331,7 @@ function Teaching() {
   return (
     <>
       <PageHero
+        variant="journey"
         eyebrow={t("teaching")}
         title={t("teachingHeadline", {
           defaultValue: "More than just online classes.",
@@ -328,7 +340,7 @@ function Teaching() {
       />
       <section className="section container">
         <SectionHeading title={t("journeyTitle")} />
-        <Roadmap items={learningSteps} />
+        <Roadmap steps={roadmapSteps("teaching", learningSteps)} eyebrow="YOUR LEARNING JOURNEY" />
       </section>
       <section className="projects-section">
         <div className="section container content-grid">
@@ -370,6 +382,7 @@ function Career() {
   return (
     <>
       <PageHero
+        variant="career"
         eyebrow={t("career")}
         title={t("careerHeadline", {
           defaultValue: "Build the confidence to take your next step.",
@@ -422,6 +435,7 @@ function Trainers() {
   return (
     <>
       <PageHero
+        variant="mentor"
         eyebrow={t("trainers")}
         title={t("trainerHeadline", {
           defaultValue: "A mentor, not just a lesson.",
@@ -466,6 +480,7 @@ function Testimonials() {
   return (
     <>
       <PageHero
+        variant="mentor"
         eyebrow={t("testimonials")}
         title={t("storiesHeadline", {
           defaultValue: "Real work speaks for itself.",
@@ -493,6 +508,7 @@ function Legal({ terms = false }: { terms?: boolean }) {
   return (
     <>
       <PageHero
+        variant="legal"
         eyebrow="CloudLight Solutions"
         title={t(terms ? "terms" : "privacy")}
         description={
@@ -618,12 +634,14 @@ export default function Pages() {
         page = (
           <>
             <PageHero
+              variant="about"
               eyebrow={t("programs")}
               title={t("programTitle")}
               description={t("programDescription")}
             />
+            <CoursesCampus />
             <section className="section container">
-              <CourseCards />
+              <BookShelf />
             </section>
             <CTA />
           </>
@@ -651,6 +669,7 @@ export default function Pages() {
         page = (
           <>
             <PageHero
+              variant="faq"
               eyebrow={t("support")}
               title={t("faq")}
               description={t("ctaDescription")}
